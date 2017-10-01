@@ -37,7 +37,6 @@ int main() {
     else if(sureName=="yes") {
       runName = 0;
     }
-    getline(cin, flavour);
-    cout<<"So you like "<<flavour<<", "<<name<<"!"<<endl;
   }
+  cout<<"So you like "<<flavour<<", "<<name<<"!"<<endl;
 }
