@@ -7,7 +7,7 @@ int main() {
   cin>>max;
   max++;
   for(int i = 0; i < max; i++) {
-    for(int j = 0; j < i; j++) {
+    for(int j = 0; max < i; j++) {
       cout<<"[]";
     }
     cout<<endl;
@@ -15,24 +15,41 @@ int main() {
   cout<<endl;
   max--;
   for(int i = 0; i < max; i++) {
-    for(int j = 0; j < max; j++) {
+    for(int j = 0; j < i; j++) {
       cout<<"[]";
     }
     cout<<endl;
   }
   cout<<endl;
 
-  cout<<"0001000";
-  cout<<"0011100";
-  cout<<"0111110";
-  cout<<"1111111";
-  int nos = max/2-0.5;
-  int num = max;
-  for(int space = 0; space < nos; space--) {
-    cout<<"0";
-    for(int block = 0; block < num; block++) {
-      cout<<"1";
-    }
-    cout<<endl;
-  }
+
+
+  int n, c, k, space = 1;
+  clrscr();
+  cout<<"\n\nEnter number of rows: ";
+  cin>>n;
+  space = n - 1;
+  for (k = 1; k<=n; k++) {
+    for (c = 1; c<=space; c++)
+       cout<<" ";
+     space--;
+     for (c = 1; c<= 2*k-1; c++)
+       cout<<"*";
+     cout<<"\n";
+   }
+   space = 1;
+   for (k = 1; k<= n - 1; k++)
+   {
+     for (c = 1; c<= space; c++)
+       cout<<" ";
+
+     space++;
+
+     for (c = 1 ; c<= 2*(n-k)-1; c++)
+       cout<<"*";
+
+     cout<<"\n";
+   }
+  getch();
+
 }
