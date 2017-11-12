@@ -1,2 +1,0 @@
-#!/bin/sh
-python3 ../scrip/c.py $1
