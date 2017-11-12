@@ -12,6 +12,13 @@ int userPut(string place) {
     stringstream ystream(yStr);
     int y = 0;
     if(!(xstream>>x).fail() && !(ystream>>y).fail()) {
+      if(x > 2 || x < 0 || y > 2 || y < 0) {
+        return 0;
+      }
+      string split(1,place[1]);
+      if(split != ",") {
+        return 0;
+      }
       if(board[x][y] == "[X]" || board[x][y] == "[O]") {
         return 0;
       } else {
@@ -26,23 +33,19 @@ int userPut(string place) {
   }
 }
 int checkWin(string type) {
-  //VERTICAL
   for(int i = 0; i < 3; i++) {
     if(board[0][i] == type && board[1][i] == type && board[2][i] == type) {
       return 1;
     }
   }
-  //HORIZONTAL
   for(int i = 0; i < 3; i++) {
     if(board[i][0] == type && board[i][1] == type && board[i][2] == type) {
       return 1;
     }
   }
-  //DIAGONAL
   if(board[0][0] == type && board[1][1] == type && board[2][2] == type) {
     return 1;
   }
-  //ANTI-DIAGONAL
   if(board[2][0] == type && board[1][1] == type && board[0][2] == type) {
     return 1;
   }
@@ -87,7 +90,7 @@ int main() {
   cout<<"Hey there. Let's play some tic tac no."<<endl;
   while(1) {
     printer();
-    cout<<"where do you want to go (x:y)? ";
+    cout<<"where do you want to go (x,y)? ";
     string place;
     cin>>place;
     if(userPut(place) == 0) {
@@ -98,12 +101,14 @@ int main() {
       cpuPut();
       if(checkWin("[X]") == 1) {
         system("clear");
+        printer();
         cout<<"Game over! X wins!"<<endl;
         break;
       }
       if(checkWin("[O]") == 1) {
         system("clear");
-        cout<<"You win because you managed to lose to a random number generator."<<endl;
+        printer();
+        cout<<"You win because you managed to lose to a random number generator. Useless pathetic failure."<<endl;
         break;
       }
     }
