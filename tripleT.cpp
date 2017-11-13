@@ -2,9 +2,9 @@
 #include <string>
 #include <sstream>
 using namespace std;
-string board[3][3];
+string board[5][5];
 int userPut(string place) {
-  if(place.length() == 3) {
+  if(place.length() == 5) {
     string xStr(1,place[2]);
     stringstream xstream(xStr);
     int x = 0;
@@ -33,12 +33,12 @@ int userPut(string place) {
   }
 }
 int checkWin(string type) {
-  for(int i = 0; i < 3; i++) {
+  for(int i = 0; i < 5; i++) {
     if(board[0][i] == type && board[1][i] == type && board[2][i] == type) {
       return 1;
     }
   }
-  for(int i = 0; i < 3; i++) {
+  for(int i = 0; i < 5; i++) {
     if(board[i][0] == type && board[i][1] == type && board[i][2] == type) {
       return 1;
     }
@@ -53,8 +53,8 @@ int checkWin(string type) {
 }
 int cpuPut() {
   while(1) {
-    int x = rand() % 3;
-    int y = rand() % 3;
+    int x = rand() % 5;
+    int y = rand() % 5;
     if(board[x][y] != "[X]" && board[x][y] != "[O]") {
       board[x][y] = "[O]";
       return 1;
@@ -63,8 +63,8 @@ int cpuPut() {
 }
 int makeBoard() {
   system("clear");
-  for(int i = 0; i < 3; i++) {
-    for(int j = 0; j < 3; j++) {
+  for(int i = 0; i < 5; i++) {
+    for(int j = 0; j < 5; j++) {
       board[i][j] = "[ ]";
     }
   }
@@ -73,13 +73,13 @@ int makeBoard() {
 int printer() {
   for(int i = 2; i > -1; i--) {
     cout<<i<<" ";
-    for(int j = 0; j < 3; j++) {
+    for(int j = 0; j < 5; j++) {
       cout<<board[i][j];
     }
     cout<<endl;
   }
   cout<<"  ";
-  for(int i = 0; i < 3; i++) {
+  for(int i = 0; i < 5; i++) {
     cout<<" "<<i<<" ";
   }
   cout<<endl;
