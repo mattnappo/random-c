@@ -32,7 +32,6 @@ int makeBoard() {
   system("clear");
   for(int i = 0; i < 6; i++) {
     for(int j = 0; j < 7; j++) {
-      //board[i][j] = "[" + to_string(i) + ":" + to_string(j) + "]";
       board[i][j] = "[ ]";
     }
   }
@@ -41,7 +40,13 @@ int makeBoard() {
 int print() {
   for(int i = 5; i > -1; i--) {
     for(int j = 0; j < 7; j++) {
-      cout<<board[i][j];
+      if(board[i][j] == "[X]") {
+        cout<<"\033[1;31m[X]\033[0m";
+      } else if(board[i][j] == "[O]") {
+        cout<<"\033[1;34m[O]\033[0m";
+      } else {
+        cout<<board[i][j];
+      }
     }
     cout<<endl;
   }

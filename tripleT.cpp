@@ -74,7 +74,13 @@ int printer() {
   for(int i = 2; i > -1; i--) {
     cout<<i<<" ";
     for(int j = 0; j < 3; j++) {
-      cout<<board[i][j];
+      if(board[i][j] == "[X]") {
+        cout<<"\033[1;31m[X]\033[0m";
+      } else if(board[i][j] == "[O]") {
+        cout<<"\033[1;34m[O]\033[0m";
+      } else {
+        cout<<board[i][j];
+      }
     }
     cout<<endl;
   }
