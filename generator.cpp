@@ -3,7 +3,7 @@
 using namespace std;
 int main() {
   int i = 0;
-  cout<<"How many negroids? ";
+  cout<<"How many? ";
   cin>>i;
   system("clear");
   for(int j = 0; j < i; j++) {
