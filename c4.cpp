@@ -8,6 +8,9 @@ int put(string place, string type) {
   int loc = 0;
   int x = 0;
   if(!(getInt>>loc).fail()) {
+    if(loc>7||loc<1) {
+      return 0;
+    }
     loc--;
     int amount = 0;
     for(int i = 0; i < 6; i++) {
@@ -25,22 +28,13 @@ int put(string place, string type) {
     return 0;
   }
 }
-int r(int i) {
-  if(i == 0) {
-    return 0;
-  } else {
-    //check if that spot is taken
-    //if i =t is, check up and down
-
+int combine(int a, int b) {
+  int times = 1;
+  while(times <= b) {
+    times*=10;
   }
-  return 0;
+  return a*times + b;
 }
-// start with column 0 as column
-// board[][] is board[row][column]
-//if board[0][column] == [x];
-  //if board[0+1][column] == [x];
-//    if board[0+2][column]
-
 int checkWin(string type) {
   // VERTICAL
   int v;
@@ -51,30 +45,54 @@ int checkWin(string type) {
         v+=2;
       }
     }
-    if(v == 6) {
+    if(v >= 6) {
       return 1;
     }
   }
-
-  int h;
+  // HORIZONTAL
   for(int row = 0; row < 6; row++) {
-    h = 0;
-    for(int col = 0; col < 7; col++) {
-      if(board[row][col] == type && board[row][col+1] == type) {
-        h+=2;
-        cout<<"horizontal at: "<<row<<" :: "<<col<<"=     "<<h<<endl;
-      } else if(board[row][col] == type && board[row][col-1] == type) {
-        h+=2;
+    for(int col = 0; col < 3; col++) {
+      if(board[row][col]==type&&board[row][col+2]==type&&board[row][col+3]==type) {
+        return 1;
       }
-    }
-    if(h == 8) {
-      return 1;
     }
   }
   return 0;
 }
+int cpuPut() {
+  while(1) {
+    int x = rand() % 7;
+    for(int i = 0; i < 6; i++) {
+      for(int j = 0; j < 7; j++) {
+        if(board[i][x+1] == "[X]" || board[i][x-1] == "[X]") {
+          if(put(to_string(x), "[O]") == 1) {
+            return 1;
+          }
+        }
+        if(board[i][x+1] == "[O]" || board[i][x-1] == "[O]") {
+          if(put(to_string(x), "[O]") == 1) {
+            return 1;
+          }
+        }
+        if(board[x+1][j] == "[X]" || board[x-1][j] == "[X]") {
+          if(put(to_string(x), "[O]") == 1) {
+            return 1;
+          }
+        }
+        if(board[x+1][j] == "[O]" || board[x-1][j] == "[O]") {
+          if(put(to_string(x), "[O]") == 1) {
+            return 1;
+          }
+        }
+      }
+    }
+  }
+
+  return 0;
+}
+
 int makeBoard() {
-  //system("clear");
+  system("clear");
   for(int i = 0; i < 6; i++) {
     for(int j = 0; j < 7; j++) {
       board[i][j] = "[ ]";
@@ -111,24 +129,19 @@ int main() {
     string place;
     cin>>place;
     if(put(place, "[X]") == 0) {
-      //system("clear");
+      system("clear");
       cout<<"You did something wrong."<<endl;
     } else {
-      //system("clear");
-      while(1) {
-        int x = rand() % 7;
-        if(put(to_string(x), "[O]") == 1) {
-          break;
-        }
-      }
+      system("clear");
+      cpuPut();
       if(checkWin("[X]") == 1) {
-        //system("clear");
+        system("clear");
         print();
         cout<<"Game over! X wins!"<<endl;
         break;
       }
       if(checkWin("[O]") == 1) {
-        //system("clear");
+        system("clear");
         print();
         cout<<"You win because you managed to lose to a random number generator. Useless pathetic failure."<<endl;
         break;
