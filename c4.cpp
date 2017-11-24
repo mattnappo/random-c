@@ -52,7 +52,24 @@ int checkWin(string type) {
   // HORIZONTAL
   for(int row = 0; row < 6; row++) {
     for(int col = 0; col < 3; col++) {
-      if(board[row][col]==type&&board[row][col+2]==type&&board[row][col+3]==type) {
+      if(board[row][col] == type && board[row][col+2] == type && board[row][col+3] == type) {
+        return 1;
+      }
+    }
+  }
+  // DIAGONAL
+  for(int col = 3; col < 7; col++) {
+    for(int row = 0; row < 6 - 3; row++) {
+      if(board[col][row] == type && board[col-1][row+1] == type && board[col-2][row+2] == type && board[col-3][row+3] == type) {
+        return 1;
+      }
+    }
+  }
+
+  // ANT-DAGONAL
+  for(int col = 3; col < 7; col++) {
+    for(int row = 3; row < 6; row++) {
+      if(board[col][row] == type && board[col-1][row-1] == type && board[col-2][row-2] == type && board[col-3][row-3] == type) {
         return 1;
       }
     }
