@@ -3,6 +3,28 @@
 #include <sstream>
 using namespace std;
 string board[3][3];
+int minimax(int depth, int token) {
+  if(depth = 0 || checkWin(token) == 1) {
+
+  }
+}
+int cpuPut(int turn) {
+  int value = 0;
+  int move;
+  int depth = 10 - turn;
+  for(int i = 0; i < 3; i++) {
+    for(int j = 0; j < 3; j++) {
+      if(board[i][j] == "[ ]") {
+        int temp;
+        if((temp = minimax(depth - 1, 1)) > value) {
+          move = i*3+j;
+          value = temp;
+        }
+      }
+    }
+  }
+  return move;
+}
 int userPut(string place) {
   if(place.length() == 3) {
     string xStr(1,place[2]);
@@ -32,26 +54,27 @@ int userPut(string place) {
     return 0;
   }
 }
-int checkWin(string type) {
+int checkWin(int tok) {
+  string token = tok == 0?"[X]":"[O]";
   for(int i = 0; i < 3; i++) {
-    if(board[0][i] == type && board[1][i] == type && board[2][i] == type) {
+    if(board[0][i] == token && board[1][i] == token && board[2][i] == token) {
       return 1;
     }
   }
   for(int i = 0; i < 3; i++) {
-    if(board[i][0] == type && board[i][1] == type && board[i][2] == type) {
+    if(board[i][0] == token && board[i][1] == token && board[i][2] == token) {
       return 1;
     }
   }
-  if(board[0][0] == type && board[1][1] == type && board[2][2] == type) {
+  if(board[0][0] == token && board[1][1] == token && board[2][2] == token) {
     return 1;
   }
-  if(board[2][0] == type && board[1][1] == type && board[0][2] == type) {
+  if(board[2][0] == token && board[1][1] == token && board[0][2] == token) {
     return 1;
   }
   return 0;
 }
-int cpuPut() {
+int badcpuPut() {
   while(1) {
     int x = rand() % 3;
     int y = rand() % 3;
@@ -92,26 +115,30 @@ int printer() {
   return 1;
 }
 int main() {
+  int turn = 0;
   makeBoard();
   cout<<"Hey there. Let's play some tic tac no."<<endl;
   while(1) {
+    turn++;
     printer();
     cout<<"where do you want to go (x,y)? ";
     string place;
     cin>>place;
-    if(userPut(place) == 0) {
+    if(userPut(turn) == 0) {
       system("clear");
       cout<<"You did something wrong."<<endl;
     } else {
       system("clear");
-      cpuPut();
-      if(checkWin("[X]") == 1) {
+      turn++;
+      if(checkWin(0) == 1) {
         system("clear");
         printer();
         cout<<"Game over! X wins!"<<endl;
         break;
       }
-      if(checkWin("[O]") == 1) {
+      int loc = cpuPut();
+      board[loc/3][loc%3];
+      if(checkWin(1) == 1) {
         system("clear");
         printer();
         cout<<"You win because you managed to lose to a random number generator. Useless pathetic failure."<<endl;

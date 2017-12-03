@@ -3,7 +3,7 @@
 #include <sstream>
 using namespace std;
 string board[6][7];
-int put(string place, string type) {
+int put(string place, string token) {
   stringstream getInt(place);
   int loc = 0;
   int x = 0;
@@ -21,7 +21,7 @@ int put(string place, string type) {
     if(amount>5) {
       return 0;
     } else {
-      board[amount][loc] = type;
+      board[amount][loc] = token;
       return 1;
     }
   } else {
@@ -35,13 +35,13 @@ int combine(int a, int b) {
   }
   return a*times + b;
 }
-int checkWin(string type) {
+int checkWin(string token) {
   // VERTICAL
   int v;
   for(int col = 0; col < 7; col++) {
     v = 0;
     for(int row = 0; row < 6; row++) {
-      if(board[row][col] == type && board[row+1][col] == type) {
+      if(board[row][col] == token && board[row+1][col] == token) {
         v+=2;
       }
     }
@@ -52,7 +52,7 @@ int checkWin(string type) {
   // HORIZONTAL
   for(int row = 0; row < 6; row++) {
     for(int col = 0; col < 3; col++) {
-      if(board[row][col] == type && board[row][col+2] == type && board[row][col+3] == type) {
+      if(board[row][col] == token && board[row][col+2] == token && board[row][col+3] == token) {
         return 1;
       }
     }
@@ -60,7 +60,7 @@ int checkWin(string type) {
   // DIAGONAL
   for(int col = 3; col < 7; col++) {
     for(int row = 0; row < 6 - 3; row++) {
-      if(board[col][row] == type && board[col-1][row+1] == type && board[col-2][row+2] == type && board[col-3][row+3] == type) {
+      if(board[col][row] == token && board[col-1][row+1] == token && board[col-2][row+2] == token && board[col-3][row+3] == token) {
         return 1;
       }
     }
@@ -69,7 +69,7 @@ int checkWin(string type) {
   // ANT-DAGONAL
   for(int col = 3; col < 7; col++) {
     for(int row = 3; row < 6; row++) {
-      if(board[col][row] == type && board[col-1][row-1] == type && board[col-2][row-2] == type && board[col-3][row-3] == type) {
+      if(board[col][row] == token && board[col-1][row-1] == token && board[col-2][row-2] == token && board[col-3][row-3] == token) {
         return 1;
       }
     }
