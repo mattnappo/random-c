@@ -3,10 +3,31 @@
 #include <sstream>
 using namespace std;
 string board[3][3];
+int checkWin(int tok) {
+  string token = tok == 0?"[X]":"[O]";
+  for(int i = 0; i < 3; i++) {
+    if(board[0][i] == token && board[1][i] == token && board[2][i] == token) {
+      return 1;
+    }
+  }
+  for(int i = 0; i < 3; i++) {
+    if(board[i][0] == token && board[i][1] == token && board[i][2] == token) {
+      return 1;
+    }
+  }
+  if(board[0][0] == token && board[1][1] == token && board[2][2] == token) {
+    return 1;
+  }
+  if(board[2][0] == token && board[1][1] == token && board[0][2] == token) {
+    return 1;
+  }
+  return 0;
+}
 int minimax(int depth, int token) {
-  if(depth = 0 || checkWin(token) == 1) {
+  if((depth = 0) || checkWin(token) == 1) {
 
   }
+  return 0;
 }
 int cpuPut(int turn) {
   int value = 0;
@@ -54,26 +75,7 @@ int userPut(string place) {
     return 0;
   }
 }
-int checkWin(int tok) {
-  string token = tok == 0?"[X]":"[O]";
-  for(int i = 0; i < 3; i++) {
-    if(board[0][i] == token && board[1][i] == token && board[2][i] == token) {
-      return 1;
-    }
-  }
-  for(int i = 0; i < 3; i++) {
-    if(board[i][0] == token && board[i][1] == token && board[i][2] == token) {
-      return 1;
-    }
-  }
-  if(board[0][0] == token && board[1][1] == token && board[2][2] == token) {
-    return 1;
-  }
-  if(board[2][0] == token && board[1][1] == token && board[0][2] == token) {
-    return 1;
-  }
-  return 0;
-}
+
 int badcpuPut() {
   while(1) {
     int x = rand() % 3;
@@ -124,6 +126,7 @@ int main() {
     cout<<"where do you want to go (x,y)? ";
     string place;
     cin>>place;
+    // LAST WORKING ON USERPUT TAKING A STRING OR AN INTEGER? TURN OR THE LOCATION IN X,Y
     if(userPut(turn) == 0) {
       system("clear");
       cout<<"You did something wrong."<<endl;
@@ -136,8 +139,7 @@ int main() {
         cout<<"Game over! X wins!"<<endl;
         break;
       }
-      int loc = cpuPut();
-      board[loc/3][loc%3];
+      int loc = cpuPut(board[loc/3][loc%3]);
       if(checkWin(1) == 1) {
         system("clear");
         printer();
