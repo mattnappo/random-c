@@ -1,10 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-struct node {
-  int val;
-  struct node *next;
-};
+#include "listHeader.h"
 
 struct node* append(struct node *tail, int val) {
   tail->next = (struct node *)malloc(sizeof(struct node));
@@ -14,33 +10,28 @@ struct node* append(struct node *tail, int val) {
   return newTail;
 }
 
-struct node* remove(struct node *toRemove) {
-  if (toRemove->next != NULL) {
-    struct node *next = toRemove->next;
-    if (next->next != NULL) {
-      temp
-    } else {
+void test(int i) {
+  printf("%d\n", i);
+}
 
-    }
-    toRemove->val = toRemove->next->val;
-    free()
+int remove_node(struct node *to_remove) {
+  if (to_remove->next != NULL) {
+    struct node *next = to_remove->next;
+    struct node *after = next->next;
+    to_remove->val = next->val;
+    free(next);
+    to_remove->next = after;
+    free(after);
+    return 0;
   }
+  return 1;
 }
 
 void print(struct node *head) {
   struct node *tempNode = head->next;
   while (tempNode != NULL) {
-    printf("%d, ", tempNode->val);
+    printf("%d, \n", tempNode->val);
     tempNode = tempNode->next;
-  }
-}
-
-void free_list(struct node *head) {
-  struct node *current = head->next;
-  while (current != NULL) {
-    struct node *temp = current->next;
-    free(current);
-    current = temp;
   }
 }
 
@@ -66,9 +57,22 @@ int main() {
      }
    }
    print(head);
+   if (!remove_node(head->next)) {
+     printf("You can not remove the tail.\n");
+   }
+   print(head);
    free_list(head);
-
    return 0;
 }
+
+void free_list(struct node *head) {
+  struct node *current = head->next;
+  while (current != NULL) {
+    struct node *temp = current->next;
+    free(current);
+    current = temp;
+  }
+}
+
 // & takes a object, gets the pointer of the object
 // * takes a pointer, gets the object of the pointer
