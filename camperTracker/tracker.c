@@ -15,10 +15,9 @@ int main() {
   char **names = malloc(amount_of_campers * sizeof(char *));
   for (int i = 0; i < amount_of_campers; i++) {
     int name_len;
-    printf("How many characters are in camper %d's name?\n", i + 1);
-    scanf("%d", &name_len);
-    fflush (stdin);
-    printf("Enter the camper's name:\n");
+    char *name;
+    printf("Enter camper %d's name:\n", i + 1);
+    scanf("%s", &name);
     names[i] = malloc(name_len + 1);
     fgets(names[i], name_len + 1, stdin);
     printf("%s recorded. \n", names[i]);
