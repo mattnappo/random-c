@@ -9,24 +9,29 @@ struct class {
   char **campers;
 };
 
-void print(char **names, int amount_of_campers) {
-  char **current_name = names;
-  for (int i = 0; i < amount_of_campers; i++) {
-    printf("%s\n", *current_name); // names[i] also works
-    current_name++;
+void print(struct class *classes, int number_of_classes) {
+  // classes (is a pointer) -> struct class -> pointer -> pointer -> char
+  struct class current_class = classes[0];
+  for (int i = 0; i < number_of_classes; i++) {
+    printf("%s students:\n", current_class.class_name);
+    for (int j = 0; j < current_class.amount_of_campers; j++) {
+      char *current_name = current_class.campers[j];
+      printf("%s\n", current_name);
+    }
+    current_class = classes[i + 1];
   }
 }
 
 void free_all(struct class *classes, int number_of_classes) {
-  /*
-  classes (is a pointer) -> struct class -> pointer -> pointer -> char
-  */
-  struct class *current_class = classes[0];
+  // classes (is a pointer) -> struct class -> pointer -> pointer -> char
+  struct class current_class = classes[0];
   for (int i = 0; i < number_of_classes; i++) {
     for (int j = 0; j < current_class.amount_of_campers; j++) {
-      free(classes[i].campers[j]);
+      char *current_name = current_class.campers[j];
+      free(current_name);
     }
-    free(current_class);
+    free(current_class.campers)
+    current_class = classes[i + 1];
   }
   free(classes);
 }
@@ -71,8 +76,7 @@ int main() {
       printf("%s recorded as %s student #%d.\n", classes[i].campers[j], classes[i].class_name, j + 1);
     }
   }
-
-  // print(names, amount_of_campers);
+  print(classes, number_of_classes);
   free_all(classes, number_of_classes);
   return 0;
 }
