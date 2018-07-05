@@ -30,7 +30,7 @@ void free_all(struct class *classes, int number_of_classes) {
       char *current_name = current_class.campers[j];
       free(current_name);
     }
-    free(current_class.campers)
+    free(current_class.campers);
     current_class = classes[i + 1];
   }
   free(classes);
