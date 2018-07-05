@@ -1,3 +1,16 @@
-language: c
-compiler: gcc
-script: gcc camperTracker/tracker.c -o tracker -g
+matrix:
+  include:
+    - language: cpp
+      compiler: g++
+      script:
+        - make classes
+
+    - language: c
+      compiler: gcc
+      script:
+        - make tracker
+        - make list
+notifications:
+  email:
+    - matthew.nappo@mastersny.org
+    - mattnappo@gmail.com
