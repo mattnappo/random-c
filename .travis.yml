@@ -3,12 +3,12 @@ matrix:
     - language: cpp
       compiler: g++
       script:
-        - make classes
+        - make build/classes
     - language: c
       compiler: gcc
       script:
-        - make tracker
-        - make list
+        - make build/tracker
+        - make build/list
 notifications:
   email:
     - matthew.nappo@mastersny.org
