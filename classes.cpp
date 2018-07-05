@@ -10,8 +10,8 @@ private:
 public:
 	int print() {
 		if(name!=""&&age!=0&&gender!=""&&state!="") {
-			system("clear");
-			cout<<name<<" is a "<<age<<"-year-old "<<gender<<" from "<<state<<endl;
+			//system("clear");
+			cout<<endl<<name<<" is a "<<age<<"-year-old "<<gender<<" from "<<state<<endl;
 			return 1;
 		} else {
 			return 0;
