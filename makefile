@@ -1,5 +1,5 @@
 # CC=gcc-8
-# CC=gcc
+CC=gcc
 tracker: camperTracker/tracker.c
 	$(CC) -o build/tracker.o camperTracker/tracker.c
 list: pointers/updatedList.c pointers/listHeader.h
@@ -12,3 +12,4 @@ all:
 	make classes
 clean:
 	rm build/*.o
+	rm build/*.exe
