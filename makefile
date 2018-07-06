@@ -1,4 +1,5 @@
-CC=gcc-8
+# CC=gcc-8
+# CC=gcc
 tracker: camperTracker/tracker.c
 	$(CC) -o build/tracker.o camperTracker/tracker.c
 list: pointers/updatedList.c pointers/listHeader.h
