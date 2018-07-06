@@ -48,7 +48,9 @@ int main() {
 
   int number_of_classes;
   printf("How many classes are there?\n");
-  scanf("%d", &number_of_classes);
+  char temp[16];
+  fgets(temp, 16, stdin);
+  sscanf(temp, "%d", &number_of_classes);
   struct class *classes = malloc(number_of_classes * sizeof(struct class)); // create the structs for the different class names
 
   for (int i = 0; i < number_of_classes; i++) {

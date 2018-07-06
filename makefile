@@ -1,13 +1,13 @@
-CC=gcc
-build/tracker: camperTracker/tracker.c
-	$(CC) -o tracker camperTracker/tracker.c -std=c99
-build/list: pointers/updatedList.c pointers/listHeader.h
-	$(CC) -o linkedList pointers/updatedList.c pointers/listHeader.h -std=c99
-build/classes: classes.cpp
-	g++ -o classes classes.cpp
+CC=gcc-8
+tracker: camperTracker/tracker.c
+	$(CC) -o build/tracker.o camperTracker/tracker.c
+list: pointers/updatedList.c pointers/listHeader.h
+	$(CC) -o build/linkedList.o pointers/updatedList.c pointers/listHeader.h
+classes: classes.cpp
+	$(CC) -o build/classes.o classes.cpp -lstdc++
 all:
-	make build/tracker
-	make build/list
-	make build/classes
+	make tracker
+	make list
+	make classes
 clean:
-	rm build/*
+	rm build/*.o
