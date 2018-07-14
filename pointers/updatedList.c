@@ -30,7 +30,7 @@ int remove_node(struct node *to_remove) {
 void print(struct node *head) {
   struct node *tempNode = head->next;
   while (tempNode != NULL) {
-    printf("%d, \n", tempNode->val);
+    printf("%d \n", tempNode->val);
     tempNode = tempNode->next;
   }
 }
