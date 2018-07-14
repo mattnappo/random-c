@@ -1,11 +1,5 @@
-matrix:
-  include:
-    - language: cpp
-      compiler: gcc
-      script:
-        - make classes
-    - language: c
-      compiler: gcc
-      script:
-        - make tracker
-        - make list
+language: c
+compiler: gcc
+script:
+  - make tracker
+  - make list
