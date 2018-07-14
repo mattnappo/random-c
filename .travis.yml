@@ -1,7 +1,7 @@
 matrix:
   include:
     - language: cpp
-      compiler: g++
+      compiler: gcc
       script:
         - make classes
     - language: c
@@ -9,7 +9,10 @@ matrix:
       script:
         - make tracker
         - make list
+<<<<<<< HEAD
 notifications:
   email:
     - matthew.nappo@mastersny.org
     - mattnappo@gmail.com
+=======
+>>>>>>> 332027e75cb585b3f315518a1a713734fdce8694
