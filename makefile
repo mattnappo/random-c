@@ -4,7 +4,7 @@ tracker: pointers/tracker.c
 list: pointers/updatedList.c pointers/listHeader.h
 	$(CC) pointers/updatedList.c pointers/listHeader.h -std=c99
 bogo: bogo.cpp
-	$(CC) bogo.cpp -o bogo -std=c99
+	g++ bogo.cpp -o bogo
 all:
 	make tracker
 	make list
