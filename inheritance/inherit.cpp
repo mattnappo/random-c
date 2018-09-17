@@ -39,9 +39,6 @@ public:
     }
 };
 
-
-
-
 int main() {
     Vehicle v("COOLGUY", 4, "v8 turbo", 200.5);
     v.print_stats();
