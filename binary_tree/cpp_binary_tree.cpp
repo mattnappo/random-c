@@ -25,13 +25,12 @@ public:
     }
 
     void print_node() {
-        std::cout << "Value: " << value << std::endl;
+        std::cout << "value: " << value << std::endl;
     }
 
     void set_value(int value) {
         this->value = value;
     }
-
     void set_right_child(Node *right_child) {
         this->right_child = right_child;
     }
@@ -70,14 +69,14 @@ int main() {
     Node *head = new Node(10);
 
     Node *right_child = new Node(20);
+    right_child->set_right_child(new Node(25));
+    right_child->set_left_child(new Node(30));
+
     Node *left_child = new Node(5);
+    left_child->set_left_child(new Node(11));
 
     head->set_right_child(right_child);
     head->set_left_child(left_child);
-
-    // head->print_node();
-    // head->get_left_child()->print_node();
-    // head->get_right_child()->print_node();
 
     head->print_r(head);
 
