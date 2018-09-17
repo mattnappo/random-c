@@ -1,10 +1,32 @@
 #include <iostream>
 #include <iostream>
 
-struct node {
+class Node {
+private:
     int value;
-    struct node *right_child;
-    struct node *left_child;
+    Node *right_child;
+    Node *left_child;
+public:
+    void set_value(int value) {
+        this->value = value;
+    }
+    void set_right_child(Node *right_child) {
+        this->right_child = right_child;
+    }
+    void set_left_child(Node *left_child) {
+        this->left_child = left_child;
+    }
+
+    int get_value() {
+        return value;
+    }
+    Node *get_right_child() {
+        return right_child;
+    }
+    Node *get_left_child() {
+        return left_child;
+    }
+
 };
 
 class Tree {
@@ -19,25 +41,6 @@ public:
 };
 
 int main() {
-
-    struct node head;
-    head.value = 10;
-
-    struct node right_child;
-    right_child.value = 15;
-
-    struct node left_child;
-    left_child.value = 5;
-
-    std::cout << right_child.value << std::endl;
-    std::cout << left_child.value << std::endl;
-
-    // head.right_child = right_child;
-    // head.left_child = left_child;
-
-    // std::cout << head.value << std::endl;
-    // std::cout << head.right_child->value << std::endl;
-    // std::cout << head.left_child->value << std::endl;
-
+    
     return 0;
 }
