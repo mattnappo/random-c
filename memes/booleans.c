@@ -115,160 +115,160 @@ struct m_byte *m_byte_constructor(
 
 int main() {
     struct m_byte *b0 = m_byte_constructor(
-        0,
-        1,
-        0,
-        0,
-        1,
-        0,
-        0,
-        0
+        FALSE,
+        TRUE,
+        FALSE,
+        FALSE,
+        TRUE,
+        FALSE,
+        FALSE,
+        FALSE
     );
 
     struct m_byte *b1 = m_byte_constructor(
-        0,
-        1,
-        1,
-        0,
-        0,
-        1,
-        0,
-        1
+        FALSE,
+        TRUE,
+        TRUE,
+        FALSE,
+        FALSE,
+        TRUE,
+        FALSE,
+        TRUE
     );
     
     struct m_byte *b2 = m_byte_constructor(
-        0,
-        1,
-        1,
-        0,
-        1,
-        1,
-        0,
-        0
+        FALSE,
+        TRUE,
+        TRUE,
+        FALSE,
+        TRUE,
+        TRUE,
+        FALSE,
+        FALSE
     );
     
     struct m_byte *b3 = m_byte_constructor(
-        0,
-        1,
-        1,
-        0,
-        1,
-        1,
-        0,
-        0
+        FALSE,
+        TRUE,
+        TRUE,
+        FALSE,
+        TRUE,
+        TRUE,
+        FALSE,
+        FALSE
     );
 
     struct m_byte *b4 = m_byte_constructor(
-        0,
-        1,
-        1,
-        0,
-        1,
-        1,
-        1,
-        1
+        FALSE,
+        TRUE,
+        TRUE,
+        FALSE,
+        TRUE,
+        TRUE,
+        TRUE,
+        TRUE
     );
 
     struct m_byte *b5 = m_byte_constructor(
-        0,
-        0,
-        1,
-        0,
-        0,
-        1,
-        1,
-        1
+        FALSE,
+        FALSE,
+        TRUE,
+        FALSE,
+        TRUE,
+        TRUE,
+        FALSE,
+        FALSE
     );
 
     struct m_byte *b6 = m_byte_constructor(
-        0,
-        0,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0
+        FALSE,
+        FALSE,
+        TRUE,
+        FALSE,
+        FALSE,
+        FALSE,
+        FALSE,
+        FALSE
     );
 
     struct m_byte *b7 = m_byte_constructor(
-        0,
-        1,
-        0,
-        1,
-        0,
-        1,
-        1,
-        1
+        FALSE,
+        TRUE,
+        FALSE,
+        TRUE,
+        FALSE,
+        TRUE,
+        TRUE,
+        TRUE
     );
 
     struct m_byte *b8 = m_byte_constructor(
-        0,
-        1,
-        1,
-        0,
-        1,
-        1,
-        1,
-        1
+        FALSE,
+        TRUE,
+        TRUE,
+        FALSE,
+        TRUE,
+        TRUE,
+        TRUE,
+        TRUE
     );
 
     struct m_byte *b9 = m_byte_constructor(
-        0,
-        1,
-        1,
-        1,
-        0,
-        0,
-        1,
-        0
+        FALSE,
+        TRUE,
+        TRUE,
+        TRUE,
+        FALSE,
+        FALSE,
+        TRUE,
+        FALSE
     );
 
     struct m_byte *b10 = m_byte_constructor(
-        0,
-        1,
-        1,
-        0,
-        1,
-        1,
-        0,
-        0
+        FALSE,
+        TRUE,
+        TRUE,
+        FALSE,
+        TRUE,
+        TRUE,
+        FALSE,
+        FALSE
     );
 
     struct m_byte *b11 = m_byte_constructor(
-        0,
-        1,
-        1,
-        0,
-        0,
-        1,
-        0,
-        0
+        FALSE,
+        TRUE,
+        TRUE,
+        FALSE,
+        FALSE,
+        TRUE,
+        FALSE,
+        FALSE
     );
 
     struct m_byte *b12 = m_byte_constructor(
-        0,
-        0,
-        1,
-        0,
-        0,
-        0,
-        0,
-        1
+        FALSE,
+        FALSE,
+        TRUE,
+        FALSE,
+        FALSE,
+        FALSE,
+        FALSE,
+        TRUE
     );
 
-
-    printf("%c\n", construct_char(construct_byte(b0))); // H
-    // printf("%c\n", construct_char(construct_byte(b1))); // E
-    // printf("%c\n", construct_char(construct_byte(b2))); // L
-    // printf("%c\n", construct_char(construct_byte(b3))); // L
-    // printf("%c\n", construct_char(construct_byte(b4))); // O
-    // printf("%c\n", construct_char(construct_byte(b5))); // [SPACE]
-    // printf("%c\n", construct_char(construct_byte(b6))); // W
-    // printf("%c\n", construct_char(construct_byte(b7))); // O
-    // printf("%c\n", construct_char(construct_byte(b8))); // R
-    // printf("%c\n", construct_char(construct_byte(b9))); // L
-    // printf("%c\n", construct_char(construct_byte(b10))); // D
-    // printf("%c\n", construct_char(construct_byte(b11))); // !
+    printf("%c", construct_char(construct_byte(b0))); // H
+    printf("%c", construct_char(construct_byte(b1))); // E
+    printf("%c", construct_char(construct_byte(b2))); // L
+    printf("%c", construct_char(construct_byte(b3))); // L
+    printf("%c", construct_char(construct_byte(b4))); // O
+    printf("%c", construct_char(construct_byte(b5))); // [SPACE]
+    printf("%c", construct_char(construct_byte(b6))); // ,
+    printf("%c", construct_char(construct_byte(b7))); // W
+    printf("%c", construct_char(construct_byte(b8))); // O
+    printf("%c", construct_char(construct_byte(b9))); // R
+    printf("%c", construct_char(construct_byte(b10))); // L
+    printf("%c", construct_char(construct_byte(b11))); // D
+    printf("%c\n", construct_char(construct_byte(b12))); // !
     return 0;
 }
