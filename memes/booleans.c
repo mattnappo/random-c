@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-// #ifdef TRUE 1
-// #ifdef FALSE 0
+#define TRUE 1
+#define FALSE 0
 
 struct m_byte {
     int b0;
@@ -114,8 +114,148 @@ struct m_byte *m_byte_constructor(
 }
 
 int main() {
-    struct m_byte *b0 = m_byte_constructor(0, 1, 0, 1, 0, 1, 1, 0);
+    struct m_byte *b0 = m_byte_constructor(
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+    );
+
+    struct m_byte *b1 = m_byte_constructor(
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1
+    );
     
+    struct m_byte *b2 = m_byte_constructor(
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0
+    );
+    
+    struct m_byte *b3 = m_byte_constructor(
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0
+    );
+
+    struct m_byte *b4 = m_byte_constructor(
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1
+    );
+
+    struct m_byte *b5 = m_byte_constructor(
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+    );
+
+    struct m_byte *b6 = m_byte_constructor(
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+    );
+
+    struct m_byte *b7 = m_byte_constructor(
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1
+    );
+
+    struct m_byte *b8 = m_byte_constructor(
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1
+    );
+
+    struct m_byte *b9 = m_byte_constructor(
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0
+    );
+
+    struct m_byte *b10 = m_byte_constructor(
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0
+    );
+
+    struct m_byte *b11 = m_byte_constructor(
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+    );
+
+    struct m_byte *b12 = m_byte_constructor(
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+    );
 
 
     printf("%c\n", construct_char(construct_byte(b0))); // H
