@@ -19,9 +19,18 @@ struct m_byte {
 };
 
 char *strc(const char *s1, const char *s2) {
-    char *result = malloc(strlen(s1) + strlen(s2) + 1);
-    strcpy(result, s1);
-    strcat(result, s2);
+    char *result = malloc(
+        strlen(s1) +
+        strlen(s2) + 1
+    );
+    strcpy(
+        result,
+        s1
+    );
+    strcat(
+        result,
+        s2
+    );
     return result;
 }
 
@@ -79,14 +88,17 @@ char *construct_byte(struct m_byte *b) {
             b6),
             b7
         );
-    // printf("%s\n", final);
     return final;
 }
 
 char construct_char(char *b) {
     char *data = b;
-    char c = strtol(data, 0, 2);
-    // printf("%s = %c = %d = 0x%.2X\n", data, c, c, c);
+    char c = strtol(
+        data,
+        0,
+        2
+    );
+
     return c;
 }
 
@@ -101,7 +113,14 @@ struct m_byte *m_byte_constructor(
     int b7
 ) {
 
-    struct m_byte *b = (struct m_byte *)malloc(sizeof(struct m_byte));
+    struct m_byte *b = (
+        struct m_byte *
+        )
+        malloc(
+        sizeof(
+            struct m_byte
+            )
+        );
     b->b0 = b0;
     b->b1 = b1;
     b->b2 = b2;
