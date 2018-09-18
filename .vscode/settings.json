@@ -18,6 +18,8 @@
         "system_error": "cpp",
         "tuple": "cpp",
         "type_traits": "cpp",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "string": "c",
+        "string_view": "c"
     }
 }

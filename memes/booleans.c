@@ -83,44 +83,52 @@ char *construct_byte(struct m_byte *b) {
     return final;
 }
 
-char *construct_char() {
-    
+char construct_char(char *b) {
+    char *data = b;
+    char c = strtol(data, 0, 2);
+    // printf("%s = %c = %d = 0x%.2X\n", data, c, c, c);
+    return c;
 }
 
-int main(void) {
-    // char *data = "01010110";
-    // char c = strtol(data, 0, 2);
-    // printf("%s = %c\n", data, c);
+struct m_byte *m_byte_constructor(
+    int b0,
+    int b1,
+    int b2,
+    int b3,
+    int b4,
+    int b5,
+    int b6,
+    int b7
+) {
 
     struct m_byte *b = (struct m_byte *)malloc(sizeof(struct m_byte));
+    b->b0 = b0;
+    b->b1 = b1;
+    b->b2 = b2;
+    b->b3 = b3;
+    b->b4 = b4;
+    b->b5 = b5;
+    b->b6 = b6;
+    b->b7 = b7;
+    return b;
+}
+
+int main() {
+    struct m_byte *b0 = m_byte_constructor(0, 1, 0, 1, 0, 1, 1, 0);
     
-    b->b0 = 0;
-    b->b1 = 1;
-    b->b2 = 0;
-    b->b3 = 1;
 
-    b->b4 = 0;
-    b->b5 = 1;
-    b->b6 = 1;
-    b->b7 = 0;
 
-    // printf("%i\n", b->b0);
-    // printf("%i\n", b->b1);
-    // printf("%i\n", b->b2);
-    // printf("%i\n", b->b3);
-    // printf("%i\n", b->b4);
-    // printf("%i\n", b->b5);
-    // printf("%i\n", b->b6);
-    // printf("%i\n", b->b7);
-
-    construct_byte(b);
-
-    // printf("%s", construct_bit(0));
-    // printf("%s", construct_bit(1));
-    // printf("%s", construct_bit(1));
-    // printf("%s", construct_bit(0));
-    // printf("%s", construct_bit(0));
-    // printf("%s", construct_bit(1));
-
+    printf("%c\n", construct_char(construct_byte(b0))); // H
+    // printf("%c\n", construct_char(construct_byte(b1))); // E
+    // printf("%c\n", construct_char(construct_byte(b2))); // L
+    // printf("%c\n", construct_char(construct_byte(b3))); // L
+    // printf("%c\n", construct_char(construct_byte(b4))); // O
+    // printf("%c\n", construct_char(construct_byte(b5))); // [SPACE]
+    // printf("%c\n", construct_char(construct_byte(b6))); // W
+    // printf("%c\n", construct_char(construct_byte(b7))); // O
+    // printf("%c\n", construct_char(construct_byte(b8))); // R
+    // printf("%c\n", construct_char(construct_byte(b9))); // L
+    // printf("%c\n", construct_char(construct_byte(b10))); // D
+    // printf("%c\n", construct_char(construct_byte(b11))); // !
     return 0;
 }
