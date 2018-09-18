@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct m_byte {
+struct m_byte {
     int b0;
     int b1;
     int b2;
@@ -21,11 +21,17 @@ char *get_char(int bit) {
     return buffer;
 }
 
-char *get_chars() {
-    char *final = "";
-
+char *get_chars(struct m_byte) {
+    char *b0 = get_char(m_byte.b0);
+    char *b1 = get_char(m_byte.b1);
+    char *b2 = get_char(m_byte.b2);
+    char *b3 = get_char(m_byte.b3);
+    char *b4 = get_char(m_byte.b4);
+    char *b5 = get_char(m_byte.b5);
+    char *b6 = get_char(m_byte.b6);
+    char *b7 = get_char(m_byte.b7);
     
-    
+    char *final = ;
     return final;
 }
 
