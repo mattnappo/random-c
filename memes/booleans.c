@@ -276,18 +276,18 @@ int main() {
         TRUE
     );
 
-    printf("%c", construct_char(construct_byte(b0))); // H
-    printf("%c", construct_char(construct_byte(b1))); // E
-    printf("%c", construct_char(construct_byte(b2))); // L
-    printf("%c", construct_char(construct_byte(b3))); // L
-    printf("%c", construct_char(construct_byte(b4))); // O
-    printf("%c", construct_char(construct_byte(b5))); // [SPACE]
-    printf("%c", construct_char(construct_byte(b6))); // ,
-    printf("%c", construct_char(construct_byte(b7))); // W
-    printf("%c", construct_char(construct_byte(b8))); // O
-    printf("%c", construct_char(construct_byte(b9))); // R
-    printf("%c", construct_char(construct_byte(b10))); // L
-    printf("%c", construct_char(construct_byte(b11))); // D
-    printf("%c\n", construct_char(construct_byte(b12))); // !
+    printf("%c", construct_char(construct_byte(b0)));
+    printf("%c", construct_char(construct_byte(b1)));
+    printf("%c", construct_char(construct_byte(b2)));
+    printf("%c", construct_char(construct_byte(b3)));
+    printf("%c", construct_char(construct_byte(b4)));
+    printf("%c", construct_char(construct_byte(b5)));
+    printf("%c", construct_char(construct_byte(b6)));
+    printf("%c", construct_char(construct_byte(b7)));
+    printf("%c", construct_char(construct_byte(b8)));
+    printf("%c", construct_char(construct_byte(b9)));
+    printf("%c", construct_char(construct_byte(b10)));
+    printf("%c", construct_char(construct_byte(b11)));
+    printf("%c\n", construct_char(construct_byte(b12)));
     return 0;
 }
