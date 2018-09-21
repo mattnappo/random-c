@@ -52,7 +52,8 @@ char *construct_byte(struct m_byte *b) {
     // printf("%i\n", b->b4);
     // printf("%i\n", b->b5);
     // printf("%i\n", b->b6);
-    // printf("%i\n", b->b7);
+    // printf("%i\n", b->b7);    
+
 
     char *b0 = construct_bit(b->b0);
     char *b1 = construct_bit(b->b1);
