@@ -2,7 +2,8 @@
 
 void add(struct tree *tree, int value) {
     set_size(tree, get_size(tree) + 1);
-    set_head(tree, r_add(get_head(tree), value));
+    struct node *head = get_head(tree);
+    set_head(tree, r_add(head, value));
 }
 
 struct node *r_add(struct node *node, int value) {

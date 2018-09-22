@@ -4,9 +4,7 @@
 int main() {
     struct tree *tree;
     
-    // add(tree, 10);
-    // add(tree, 1);
+    add(tree, 10);
     
-
     return 0;
 }
