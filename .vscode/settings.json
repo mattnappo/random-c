@@ -21,5 +21,6 @@
         "stdlib.h": "c",
         "string": "c",
         "string_view": "c"
-    }
+    },
+    "python.linting.pylintEnabled": false
 }
