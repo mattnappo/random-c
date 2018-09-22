@@ -14,7 +14,17 @@ int get_value(struct node *node);
 
 // ----- TREE -----
 
-struct node *r_add(struct node *node, int value);
+struct tree;
 
+int get_size(struct tree *tree);
+struct node *get_head(struct tree *tree);
+
+void set_size(struct tree *tree, int size);
+void set_head(struct tree *tree, struct node *head);
+
+// ----- TREE FUNCTIONS -----
+
+void add(struct tree *tree, int value);
+struct node *r_add(struct node *node, int value);
 
 #endif

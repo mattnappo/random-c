@@ -2,9 +2,11 @@
 #include "tree.h"
 
 int main() {
-    struct node *head;
-    set_value(head, 10);
-    print_value(head);
+    struct tree *tree;
+    
+    // add(tree, 10);
+    // add(tree, 1);
+    
 
     return 0;
 }

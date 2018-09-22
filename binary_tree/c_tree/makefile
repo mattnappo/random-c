@@ -1,4 +1,4 @@
-SRC = src/main.c src/tree.c src/node.c
+SRC = src/main.c src/tree.c src/node.c src/tree_implement.c
 HEADERS = src/tree.h
 tree: $(SRC) $(HEADERS)
 	gcc -o bin/$@ $(SRC)
