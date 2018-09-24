@@ -3,6 +3,7 @@
 void add(struct tree *tree, int value) {
     set_size(tree, get_size(tree) + 1);
     struct node *head = get_head(tree);
+    // head is null -- this is why its throwing a null ptr
     set_head(tree, r_add(head, value));
 }
 
