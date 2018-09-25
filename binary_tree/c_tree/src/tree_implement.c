@@ -1,10 +1,8 @@
 #include "tree.h"
 
 void add(struct tree *tree, int value) {
-    set_size(tree, get_size(tree) + 1);
-    struct node *head = get_head(tree);
-    // head is null -- this is why its throwing a null ptr
-    set_head(tree, r_add(head, value));
+    tree->size = tree->size + 1;
+    r_add(tree->head, value);
 }
 
 struct node *r_add(struct node *node, int value) {

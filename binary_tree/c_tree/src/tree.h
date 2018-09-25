@@ -14,7 +14,10 @@ int get_value(struct node *node);
 
 // ----- TREE -----
 
-struct tree;
+struct tree {
+    int size;
+    struct node *head;
+};
 
 int get_size(struct tree *tree);
 struct node *get_head(struct tree *tree);
