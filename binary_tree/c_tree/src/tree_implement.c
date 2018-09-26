@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "tree.h"
 
 void add(struct tree *tree, int value) {
@@ -7,13 +8,14 @@ void add(struct tree *tree, int value) {
 
 struct node *r_add(struct node *node, int value) {
     if (node == 0) {
-        set_value(node, value);
-    } else if (value <= get_value(node)) {
-        struct node *left = get_left_child(node);
-        left = r_add(get_left_child(node), value);
+        printf("this is happening\n");
+        node->value = value;
+    } else if (value <= node->value) {
+        struct node *left = node->left_child;
+        left = r_add(node->left_child, value);
     } else {
-        struct node *right = get_right_child(node);
-        right = r_add(get_right_child(node), value);
+        struct node *right = node->right_child;
+        right = r_add(node->right_child, value);
     }
     return node;
 }
