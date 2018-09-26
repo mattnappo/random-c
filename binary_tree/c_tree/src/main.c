@@ -14,13 +14,13 @@ struct node {
 };
 
 int main() {
-    struct node *m_node;
+    struct node *m_node = malloc(sizeof(struct node));;
     m_node->value = 10;
     printf("%d\n", m_node->value); // WORKS FINE
     
-    struct tree *m_tree;
+    struct tree *m_tree = malloc(sizeof(struct tree));
     m_tree->head = m_node;
-    printf("%d\n", m_tree->head->value);
+    printf("%d\n", m_tree->head->value); // Seg fault
 
 
     return 0;
