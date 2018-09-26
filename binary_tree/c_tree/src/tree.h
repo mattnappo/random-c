@@ -3,7 +3,12 @@
 
 // ----- NODE -----
 
-struct node;
+struct node {
+    int value;
+    struct node *left_child;
+    struct node *right_child;
+};
+
 void print_value(struct node *node);
 void set_value(struct node *node, int value);
 
@@ -14,7 +19,10 @@ int get_value(struct node *node);
 
 // ----- TREE -----
 
-struct tree;
+struct tree {
+    int size;
+    struct node *head;
+};
 
 int get_size(struct tree *tree);
 struct node *get_head(struct tree *tree);

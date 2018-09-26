@@ -3,8 +3,8 @@
 #include "tree.h"
 
 int main() {
-    printf("node is zero");    
-    struct tree *tree;
+    printf("WORKING\n");
+    struct tree *tree = malloc(sizeof(struct tree));
     
     add(tree, 10);
     

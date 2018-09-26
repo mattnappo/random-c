@@ -1,10 +1,5 @@
 #include "tree.h"
 
-struct tree {
-    int size;
-    struct node *head;
-};
-
 int get_size(struct tree *tree) {
     return tree->size;
 }
