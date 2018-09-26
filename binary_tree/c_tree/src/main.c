@@ -3,10 +3,10 @@
 #include "tree.h"
 
 int main() {
-    printf("WORKING\n");
-    struct tree *tree = malloc(sizeof(struct tree));
-    
-    add(tree, 10);
-    
+    struct tree *m_tree = malloc(sizeof(struct tree));
+    m_tree->head = malloc(sizeof(struct node));
+
+    printf("%d\n", m_tree->head->value);
+
     return 0;
 }

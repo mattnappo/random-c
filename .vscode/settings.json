@@ -20,7 +20,9 @@
         "type_traits": "cpp",
         "stdlib.h": "c",
         "string": "c",
-        "string_view": "c"
+        "string_view": "c",
+        "initializer_list": "c",
+        "utility": "c"
     },
     "python.linting.pylintEnabled": false
 }
