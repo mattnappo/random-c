@@ -1,27 +1,13 @@
 #include <stdlib.h>
 #include <stdio.h>
-// #include "tree.h"
-
-struct tree {
-    int size;
-    struct node *head;
-};
-
-struct node {
-    int value;
-    struct node *left_child;
-    struct node *right_child;
-};
+#include "tree.h"
 
 int main() {
-    struct node *m_node = malloc(sizeof(struct node));;
-    m_node->value = 10;
-    printf("%d\n", m_node->value); // WORKS FINE
-    
     struct tree *m_tree = malloc(sizeof(struct tree));
-    m_tree->head = m_node;
-    printf("%d\n", m_tree->head->value); // Seg fault
 
+    m_tree->size = m_tree->size + 1;
+    m_tree->head = malloc(sizeof(struct node));
+    printf("%d\n", m_tree->head->value);
 
     return 0;
 }
