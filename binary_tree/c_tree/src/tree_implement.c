@@ -4,7 +4,6 @@
 
 void add(struct tree *tree, int value) {
     tree->size = tree->size + 1;
-    
     r_add(tree->head, value);
 }
 
