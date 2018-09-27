@@ -34,7 +34,9 @@ void set_head(struct tree *tree, struct node *head);
 void print_tree(struct tree *tree);
 void _print_tree(struct node *node);
 
-void inorder(struct node *root);
+void basic_print(struct node *node);
+void print(struct tree *tree);
+void r_print(struct node *head, int space);
 
 // ----- TREE FUNCTIONS -----
 

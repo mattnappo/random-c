@@ -38,7 +38,7 @@ int main() {
 
     printf("%d\n", m_tree->head->value);
 
-    inorder(m_tree->head);
+    basic_print(m_tree->head);
 
     // printf("%d\n", m_tree->head->right_child->value);
     // printf("%d\n", m_tree->head->left_child->value);
