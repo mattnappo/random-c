@@ -1,11 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "tree.h"
-#define SPACE 10
+#define SPACE 5
 
 void add(struct tree *tree, int value) {
     tree->size = tree->size + 1;
-    printf("size: %d\n", tree->size);
     r_add(tree->head, value);
 }
 
