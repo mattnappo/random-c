@@ -39,4 +39,7 @@ void basic_print(struct node *node);
 void print(struct tree *tree);
 void r_print(struct node *head, int space);
 
+int contains(struct tree *tree, int value);
+int r_contains(struct node *node, int value);
+
 #endif

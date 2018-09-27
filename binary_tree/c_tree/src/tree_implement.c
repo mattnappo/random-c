@@ -20,6 +20,23 @@ struct node *r_add(struct node *node, int value) {
     return node;
 }
 
+int contains(struct tree *tree, int value) {
+    return r_contains(tree->head, value);
+}
+
+int r_contains(struct node *node, int value) {
+    if (node == NULL) {
+        return 0;
+    }
+    else if (node->value == value) {
+        return 1;
+    } else if (node->value < value) {
+        return r_contains(node->right_child, value);
+    } else {
+        return r_contains(node->left_child, value);
+    }
+}
+
 void basic_print(struct node *node) {
     if (node != NULL) {
         basic_print(node->left_child);
