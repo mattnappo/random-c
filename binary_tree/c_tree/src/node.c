@@ -1,8 +1,16 @@
-#include <stdio.h>
+#include <stdlib.h>
 #include "tree.h"
 
-void print_value(struct node *node) {
-    printf("value: %d\n", node->value);
+struct node *new_node(int value) {
+    struct node *node = malloc(sizeof(struct node));
+    node->value = value;
+    node->right_child = NULL;
+    node->left_child = NULL;
+    return node;
+}
+
+int get_value(struct node *node) {
+    return node->value;
 }
 
 void set_value(struct node *node, int value) {
@@ -15,8 +23,4 @@ struct node *get_right_child(struct node *node) {
 
 struct node *get_left_child(struct node *node) {
     return node->left_child;
-}
-
-int get_value(struct node *node) {
-    return node->value;
 }

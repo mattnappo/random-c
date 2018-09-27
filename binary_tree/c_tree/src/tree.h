@@ -8,15 +8,13 @@ struct node {
     struct node *left_child;
     struct node *right_child;
 };
+struct node *new_node(int value);
 
-void print_value(struct node *node);
 void set_value(struct node *node, int value);
+int get_value(struct node *node);
 
 struct node *get_right_child(struct node *node);
 struct node *get_left_child(struct node *node);
-
-int get_value(struct node *node);
-struct node *new_node(int value);
 
 // ----- TREE -----
 
@@ -24,23 +22,21 @@ struct tree {
     int size;
     struct node *head;
 };
+struct tree *new_tree();
 
 int get_size(struct tree *tree);
-struct node *get_head(struct tree *tree);
-
 void set_size(struct tree *tree, int size);
+
+struct node *get_head(struct tree *tree);
 void set_head(struct tree *tree, struct node *head);
-
-void print_tree(struct tree *tree);
-void _print_tree(struct node *node);
-
-void basic_print(struct node *node);
-void print(struct tree *tree);
-void r_print(struct node *head, int space);
 
 // ----- TREE FUNCTIONS -----
 
 void add(struct tree *tree, int value);
 struct node *r_add(struct node *node, int value);
+
+void basic_print(struct node *node);
+void print(struct tree *tree);
+void r_print(struct node *head, int space);
 
 #endif
