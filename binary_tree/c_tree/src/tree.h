@@ -30,6 +30,9 @@ struct node *get_head(struct tree *tree);
 void set_size(struct tree *tree, int size);
 void set_head(struct tree *tree, struct node *head);
 
+void print_tree(struct tree *tree);
+void _print_tree(struct node *node);
+
 // ----- TREE FUNCTIONS -----
 
 void add(struct tree *tree, int value);
