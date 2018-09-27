@@ -1,4 +1,10 @@
-SRC = src/main.c src/tree.c src/node.c src/tree_implement.c
-HEADERS = src/tree.h
-tree: $(SRC)
-	gcc -o bin/$@ $(SRC) -g
+SRC = src
+BIN = bin/
+
+SOURCE := $(shell find $(SRC) -name '*.c')
+HEADERS = $(wildcard *.h)
+
+tree: $(SOURCE) $(HEADERS)
+	gcc -o $(BIN)$@ $(SOURCE)
+clean:
+	rm -rf $(BIN)*

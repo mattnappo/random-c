@@ -45,16 +45,6 @@ char *construct_bit(int bit) {
 
 char *construct_byte(struct m_byte *b) {
 
-    // printf("%i\n", b->b0);
-    // printf("%i\n", b->b1);
-    // printf("%i\n", b->b2);
-    // printf("%i\n", b->b3);
-    // printf("%i\n", b->b4);
-    // printf("%i\n", b->b5);
-    // printf("%i\n", b->b6);
-    // printf("%i\n", b->b7);    
-
-
     char *b0 = construct_bit(b->b0);
     char *b1 = construct_bit(b->b1);
     char *b2 = construct_bit(b->b2);
@@ -63,15 +53,6 @@ char *construct_byte(struct m_byte *b) {
     char *b5 = construct_bit(b->b5);
     char *b6 = construct_bit(b->b6);
     char *b7 = construct_bit(b->b7);
-    
-    // printf("%s\n", b0);
-    // printf("%s\n", b1);
-    // printf("%s\n", b2);
-    // printf("%s\n", b3);
-    // printf("%s\n", b4);
-    // printf("%s\n", b5);
-    // printf("%s\n", b6);
-    // printf("%s\n", b7);
     
     char *final = strc(
         strc(
