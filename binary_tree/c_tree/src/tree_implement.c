@@ -29,6 +29,10 @@ void basic_print(struct node *node) {
     }
 }
 
+void print(struct tree *tree) {
+   r_print(tree->head, 0);
+}
+
 void r_print(struct node *head, int space) {
     if (head == NULL) {
         return;
@@ -41,9 +45,4 @@ void r_print(struct node *head, int space) {
     }
     printf("%d\n", head->value);
     r_print(head->left_child, space);
-} 
-
-
-void print(struct tree *tree) {
-   r_print(tree->head, 0);
 }
