@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "tree.h"
-#define SPACE 5
+#define SPACE 10
 
 void add(struct tree *tree, int value) {
     tree->size = tree->size + 1;

@@ -1,10 +1,10 @@
 SRC = src
 BIN = bin/
 
-SOURCE := $(shell find $(SRC) -name '*.c')
+SOURCE := $(shell find $(SRC) -name '*.cpp')
 HEADERS = $(wildcard *.h)
 
 mesh: $(SOURCE) $(HEADERS)
-	gcc -o $(BIN)$@ $(SOURCE)
+	g++ -o $(BIN)$@ $(SOURCE)
 clean:
 	rm -rf $(BIN)*
