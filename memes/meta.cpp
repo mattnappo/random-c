@@ -78,6 +78,9 @@ private:
         // Next up, write the func to close all of the for loops.
         // Then, fix an error: make all of the defines letters capitalized.
         string closeLoops = totalSpaces;
+        for (int i = 0; i < dimensions; i++) {
+            closeLoops = closeLoops + st + "\n}";
+        }
 
         codeBody = codeBody + loops + example + closeLoops + "\n";
     }
@@ -123,6 +126,7 @@ int main() {
     Params<char> *p = new Params<char>(4, 10, "a");
     
     p -> Generate();
+    p -> PrintCode();
     p -> WriteToFile("work");
 
 
