@@ -11,6 +11,7 @@ template <typename T>
 class Params {
 private:
     string chars[26] = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
+    string defs[26] = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
     int dimensions;
     int size;
     string arrayName;
@@ -37,7 +38,7 @@ private:
     void generateDefines() {
         string defines = "\n";
         for (int i = 0; i < dimensions; i++) {
-            defines = defines + "#define " + chars[i] + " " + std::to_string(size) + "\n";
+            defines = defines + "#define " + defs[i] + " " + std::to_string(size) + "\n";
         }
         codeHeader = codeHeader + defines;
     }
@@ -46,7 +47,7 @@ private:
         string root = typeName();
         string code = root + " " + arrayName;
         for (int i = 0; i < dimensions; i++) {
-            code = code + "[" + chars[i] + "]";
+            code = code + "[" + defs[i] + "]";
         }
         codeBody = codeBody + code + ";\n";
     }
@@ -73,13 +74,13 @@ private:
         for (int i = 0; i < dimensions; i++) {
             example = example + "[" + chars[i] + "]";
         }
-        example = example + " = \"hello world!!\"\n";
+        example = example + " = \"hello world!!\";\n";
 
         // Next up, write the func to close all of the for loops.
         // Then, fix an error: make all of the defines letters capitalized.
         string closeLoops = totalSpaces;
         for (int i = 0; i < dimensions; i++) {
-            closeLoops = closeLoops + st + "\n}";
+            closeLoops = closeLoops + "\n}";
         }
 
         codeBody = codeBody + loops + example + closeLoops + "\n";
@@ -123,7 +124,7 @@ public:
 
 
 int main() {
-    Params<char> *p = new Params<char>(4, 10, "a");
+    Params<string> *p = new Params<string>(26, 26, "arr");
     
     p -> Generate();
     p -> PrintCode();
