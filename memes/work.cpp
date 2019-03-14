@@ -28,7 +28,7 @@
 #define Z 26
 
 int main() {
-std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > arr[A][B][C][D][E][F][G][H][I][J][K][L];
+std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > arr[A][B][C][D][E][F][G][H][I][J][K][L][M][N][O][P][Q][R][S][T][U][V][W][X][Y][Z];
 
 for (int a = 0; a < 26; a++) {
    for (int b = 0; b < 26; b++) {
@@ -56,7 +56,10 @@ for (int a = 0; a < 26; a++) {
                                                                      for (int x = 0; x < 26; x++) {
                                                                         for (int y = 0; y < 26; y++) {
                                                                            for (int z = 0; z < 26; z++) {
-                                                                                arr[a][b][c][d][e][f][g][h][i][j][k][l][m][n][o][p][q][r][s][t][u][v][w][x][y][z] = "hello world!!";
+                                                                                                    // Enter any code that you want here!
+                                                                                                    // We'll give you an example...
+
+                                                                                                    arr[a][b][c][d][e][f][g][h][i][j][k][l][m][n][o][p][q][r][s][t][u][v][w][x][y][z] = "hello world!!";
                                                                                                     
 }
 }
