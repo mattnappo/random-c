@@ -1,6 +1,8 @@
 #include <math.h>
 #include <stdio.h>
 
+#define Q 100
+
 double probability(double q, int z)
 {
         double p = 1 - q;
@@ -19,6 +21,7 @@ double probability(double q, int z)
 
 int main()
 {
+        // double Q = 100;
         for (int i = 0; i < 10; i++) {
                 double P = probability(Q, i);
                 printf("[%d] %f\n", i, P);
