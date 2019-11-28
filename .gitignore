@@ -1,6 +1,8 @@
 # OTHER
 .vscode/
 
+*.swp
+
 # PYTHON
 *.py
 
