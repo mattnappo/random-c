@@ -1,11 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <strings.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <pthread.h>
-#include <unistd.h>
+#include "mal.h"
 
 #define MAX_CONN 5
 #define PORT 42001
@@ -76,13 +69,6 @@ int run_server()
     }
 
     close(server_socket);
-
-    return 0;
-}
-
-int main()
-{
-    run_server();
 
     return 0;
 }

@@ -9,9 +9,9 @@ LIB		:= lib
 LIBRARIES	:=
 
 ifeq ($(OS),Windows_NT)
-EXECUTABLE	:= server.exe
+EXECUTABLE	:= mal.exe
 else
-EXECUTABLE	:= server
+EXECUTABLE	:= mal
 endif
 
 SOURCEDIRS	:= $(shell find $(SRC) -type d)
