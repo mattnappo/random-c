@@ -1,13 +1,5 @@
 #include "mal.h"
 
-#define MAX_CONN 5
-#define PORT 42001
-#define BUFF_SIZE 512
-
-typedef struct server_reader_ {
-    int socket;
-} server_reader_;
-
 void *server_reader(void *argsp)
 {
     server_reader_ *args = argsp;

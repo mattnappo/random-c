@@ -1,24 +1,5 @@
 #include "mal.h"
 
-#define PORT 42001
-#define BUFF_SIZE 512
-#define LOCS_SIZE 2
-
-typedef struct unit_ {
-    double x;
-    double y;
-    double z;
-    double t;
-} unit_;
-
-typedef struct payload_ {
-    unsigned int pos;
-    unsigned int max;
-    // unit_ locs[LOCS_SIZE];
-    float *locs;
-    
-} payload_;
-
 payload_ new_payload(int pos, int max, float *locs)
 {
     payload_ payload = {
