@@ -31,6 +31,7 @@ all: $(BIN)/$(EXECUTABLE)
 clean:
 	-$(RM) $(BIN)/$(EXECUTABLE)
 	-$(RM) $(OBJECTS)
+	-$(RM) -rf $(BIN)/*
 
 
 run: all
