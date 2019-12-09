@@ -9,7 +9,7 @@ struct loc_ {
     t:double;
 }
 
-struct payload_ {
+table payload_ {
     frame:uint;
     max:uint;
     

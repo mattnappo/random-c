@@ -1,0 +1,5 @@
+bin/flatcc*
+lib/libflatcc*.a
+include/flatcc
+generated/
+build/
