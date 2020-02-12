@@ -60,10 +60,10 @@ int dump(struct memory *mem, enum print_mode m)
   printf("\n=== BEGIN DUMP ===\n");
   for (int i = 0; i < mem->s; i++) {
     if (mem->bytes[i] == 0) {
-      printf("%s", (m == HEX) ? "0" : " ");
+      printf("%s", (m == HEX) ? "00 " : " ");
     }
-    if (m == HEX) {
-      printf("%x", mem->bytes[i]);
+	else if (m == HEX) {
+      printf("%x ", mem->bytes[i]);
     }
     else if (m == DEC) {
       printf("%c", mem->bytes[i]);
@@ -90,12 +90,21 @@ int write(
   return 0;
 }
 
-int write_file(struct memory *mem, struct file *f)
+int write_file(
+  struct memory *mem,
+  struct file *f,
+  size_t offset
+)
 {
-  
-
+  if (f->s + offset >= mem->s) {
+    printf("buffer is too big.\n");
+    return 1;
+  }
+  for (size_t i = 0; i < f->s; i++) {
+    mem->bytes[i + offset] = f->bytes[i];
+  }
   return 0;
-};
+}
 
 int main()
 {
@@ -109,6 +118,9 @@ int main()
     sizeof(b),
     (size_t) 1010
   );
+
+  struct file *f = new_file("testfile.txt");
+  write_file(mem, f, 10);
 
   dump(mem, HEX);
 
