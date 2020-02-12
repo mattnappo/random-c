@@ -1,52 +1,76 @@
 #include <stdlib.h>
+#include <string.h>
 #include <stdio.h>
 
 #define BSIZE 1024
-#define FSIZE 128
 
-struct file {
-    char * bytes;
-    size_t len;
+enum print_mode {
+  HEX,
+  DEC
 };
-
-struct file new_file(char *b) {
-    struct file f = { b, strlen(a) };
-    return f;
-}
 
 struct memory {
-    char * bytes;
-    size_t * f_sizes;
+  char *bytes;
+  size_t s;
 };
 
-struct memory *new_memory() {
-    struct memory *mem = malloc(sizeof(struct memory *));
-    mem -> bytes = malloc(sizeof(char) * BSIZE);
-    mem -> f_sizes = malloc(sizeof(char) * FSIZE);
-    return mem;
+struct memory *new_memory()
+{
+  struct memory *mem = malloc(sizeof(struct memory *));
+  mem->bytes   = malloc(sizeof(char) * BSIZE);
+  mem->s       = sizeof(char) * BSIZE;
+  return mem;
 }
 
-int dump(struct memory *mem) {
-    printf("%s", mem -> bytes);
-    return 0;
-}
-
-int write_file(struct memory *mem, struct file file, int position) {
-    if (position > BSIZE) {
-        printf("invalid position");
-        return 1;
+int dump(struct memory *mem, enum print_mode m)
+{
+  printf("\n=== BEGIN DUMP ===\n");
+  for (int i = 0; i < mem->s; i++) {
+    if (mem->bytes[i] == 0) {
+      printf("%s", (m == HEX) ? "0" : " ");
     }
-
-    for (int i = position; i < file -> len; i++) {
-        mem -> bytes[i] = file -> bytes[i];
+    if (m == HEX) {
+      printf("%x", mem->bytes[i]);
     }
-
-    return 0;
+    else if (m == DEC) {
+      printf("%c", mem->bytes[i]);
+    }
+  }
+  printf("\n=== END DUMP ===\n");
+  return 0;
 }
 
-int main() {
-    struct memory *mem = new_memory();
-    dump(mem);
+int write(
+  struct memory *mem,
+  char *b,
+  size_t s,
+  size_t offset
+)
+{
+  if (s + offset >= mem->s) {
+    printf("buffer is too big.\n");
+    return 1;
+  }
+  for (size_t i = 0; i < s; i++) {
+    mem->bytes[i + offset] = b[i];
+  }
+  return 0;
+}
 
-    return 0;
+int main()
+{
+  struct memory *mem = new_memory();
+  dump(mem, HEX);
+
+  char *b = "mem-sec";
+  write(
+    mem,
+    b,
+    sizeof(b),
+    (size_t) 1010
+  );
+
+  dump(mem, HEX);
+
+  return 0;
 }

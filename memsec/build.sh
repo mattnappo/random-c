@@ -1,3 +1,3 @@
 #!/bin/sh
-
-gcc -o memsec.o memsec.c
+mkdir -p bin/
+gcc -o bin/memsec.o memsec.c
