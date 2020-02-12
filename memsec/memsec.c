@@ -9,6 +9,39 @@ enum print_mode {
   DEC
 };
 
+struct file {
+  char *bytes;
+  size_t s;
+};
+
+struct file *new_file(const char *name)
+{
+  struct file *f = malloc(sizeof(struct file *));
+
+  size_t fsize, read_size;
+  FILE *fp = fopen(name, "r");
+
+  if (fp) {
+    fseek(fp, 0, SEEK_END);
+    fsize = ftell(fp);
+    f->bytes = malloc(sizeof(char) * fsize);
+    f->s = fsize;
+
+    rewind(fp);
+    read_size = fread(f->bytes, sizeof(char), fsize, fp);
+
+    if (fsize != read_size) {
+      free(f->bytes);
+      f->bytes = NULL;
+      f->s = 0;
+    }
+
+    fclose(fp);
+  }
+
+  return f;
+}
+
 struct memory {
   char *bytes;
   size_t s;
@@ -27,10 +60,10 @@ int dump(struct memory *mem, enum print_mode m)
   printf("\n=== BEGIN DUMP ===\n");
   for (int i = 0; i < mem->s; i++) {
     if (mem->bytes[i] == 0) {
-      printf("%s", (m == HEX) ? "00 " : " ");
+      printf("%s", (m == HEX) ? "0" : " ");
     }
-	else if (m == HEX) {
-      printf("%x ", mem->bytes[i]);
+    if (m == HEX) {
+      printf("%x", mem->bytes[i]);
     }
     else if (m == DEC) {
       printf("%c", mem->bytes[i]);
@@ -56,6 +89,13 @@ int write(
   }
   return 0;
 }
+
+int write_file(struct memory *mem, struct file *f)
+{
+  
+
+  return 0;
+};
 
 int main()
 {
