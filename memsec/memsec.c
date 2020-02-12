@@ -27,10 +27,10 @@ int dump(struct memory *mem, enum print_mode m)
   printf("\n=== BEGIN DUMP ===\n");
   for (int i = 0; i < mem->s; i++) {
     if (mem->bytes[i] == 0) {
-      printf("%s", (m == HEX) ? "0" : " ");
+      printf("%s", (m == HEX) ? "00 " : " ");
     }
-    if (m == HEX) {
-      printf("%x", mem->bytes[i]);
+	else if (m == HEX) {
+      printf("%x ", mem->bytes[i]);
     }
     else if (m == DEC) {
       printf("%c", mem->bytes[i]);
