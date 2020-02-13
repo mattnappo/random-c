@@ -52,8 +52,7 @@ struct memory *new_memory()
 {
   struct memory *mem = malloc(sizeof(struct memory *));
   mem->bytes   = malloc(sizeof(char) * BSIZE);
-  // mem->s       = sizeof(char) * BSIZE;
-  mem->s       = 100; 
+  mem->s       = sizeof(char) * BSIZE;
 
   return mem;
 }
@@ -128,15 +127,16 @@ struct fs *new_fs()
   return fs;
 }
 
+/*
 int add_file(struct fs *fs, struct file *f, size_t offset) {
-  /*
   fs->offsets[fs->fc] = offset;
   fs->sizes[fs->fc] = f->s;
   fs->fc++;
-  */
+  
   write_file(fs->mem, f, offset);
   return 0;
 }
+*/
 
 int remove_file();
 
@@ -161,12 +161,29 @@ int test_new_file()
 
 int main()
 {
-  // test_new_file();
+  char *s = "test data";
 
   struct fs *fs = new_fs();
-  struct file *f = new_file("testfile.txt");
-  add_file(fs, f, 0);
 
+  write(fs->mem, s, strlen(s), 0);
+  
   dump(fs->mem, DEC);
+
+
+  // test_new_file();
+
+//   struct memory *mem = new_memory();
+  
+//   struct fs *fs = new_fs();
+//   struct file *f = new_file("testfile.txt");
+//   fs->mem->bytes = malloc(sizeof(char) * BSIZE);
+//   fs->mem->s     = BSIZE;
+//   printf("\n\nLU: [%lu]\n ", fs->mem->s);
+//   //write_file(fs->mem, f, 0);
+//   dump(fs->mem, DEC);
+
+//   // add_file(fs, f, 0);
+
+//   //dump(fs->mem, DEC);
   return 0;
 }
