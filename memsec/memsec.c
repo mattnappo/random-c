@@ -3,6 +3,7 @@
 #include <stdio.h>
 
 #define BSIZE 1024
+#define FCOUNT BSIZE
 
 enum print_mode {
   HEX,
@@ -51,7 +52,9 @@ struct memory *new_memory()
 {
   struct memory *mem = malloc(sizeof(struct memory *));
   mem->bytes   = malloc(sizeof(char) * BSIZE);
-  mem->s       = sizeof(char) * BSIZE;
+  // mem->s       = sizeof(char) * BSIZE;
+  mem->s       = 100; 
+
   return mem;
 }
 
@@ -97,7 +100,8 @@ int write_file(
 )
 {
   if (f->s + offset >= mem->s) {
-    printf("buffer is too big.\n");
+   printf("f->s + offset: %lu\nmem->s: %lu\n", (f->s + offset), mem->s);
+   printf("buffer is too big.\n");
     return 1;
   }
   for (size_t i = 0; i < f->s; i++) {
@@ -106,10 +110,39 @@ int write_file(
   return 0;
 }
 
-int main()
+struct fs {
+  struct memory *mem;
+  size_t *offsets;
+  size_t *sizes;
+  unsigned int fc;
+};
+
+struct fs *new_fs()
+{
+  struct fs *fs = malloc(sizeof(struct fs *));
+  fs->mem       = new_memory();
+  fs->offsets   = malloc(sizeof(size_t *));
+  fs->sizes     = malloc(sizeof(size_t *));
+  fs->fc        = 0;
+  
+  return fs;
+}
+
+int add_file(struct fs *fs, struct file *f, size_t offset) {
+  /*
+  fs->offsets[fs->fc] = offset;
+  fs->sizes[fs->fc] = f->s;
+  fs->fc++;
+  */
+  write_file(fs->mem, f, offset);
+  return 0;
+}
+
+int remove_file();
+
+int test_new_file()
 {
   struct memory *mem = new_memory();
-  dump(mem, HEX);
 
   char *b = "mem-sec";
   write(
@@ -123,6 +156,17 @@ int main()
   write_file(mem, f, 10);
 
   dump(mem, HEX);
+  return 0;
+}
 
+int main()
+{
+  // test_new_file();
+
+  struct fs *fs = new_fs();
+  struct file *f = new_file("testfile.txt");
+  add_file(fs, f, 0);
+
+  dump(fs->mem, DEC);
   return 0;
 }
