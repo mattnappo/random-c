@@ -18,18 +18,19 @@ struct file {
 struct file *new_file(const char *name)
 {
   struct file *f = malloc(sizeof(struct file *));
-
   size_t fsize, read_size;
   FILE *fp = fopen(name, "r");
 
   if (fp) {
     fseek(fp, 0, SEEK_END);
     fsize = ftell(fp);
-    f->bytes = malloc(sizeof(char) * fsize);
-    f->s = fsize;
+    f->bytes = malloc(sizeof(char) * (fsize + 1));
 
     rewind(fp);
     read_size = fread(f->bytes, sizeof(char), fsize, fp);
+
+    f->bytes[fsize] = '\0';
+    f->s = read_size;
 
     if (fsize != read_size) {
       free(f->bytes);
@@ -111,32 +112,23 @@ int write_file(
 
 struct fs {
   struct memory *mem;
-  size_t *offsets;
-  size_t *sizes;
-  unsigned int fc;
+  //   size_t *offsets;
+  //   size_t *sizes;
+  //   unsigned int fc;
 };
 
 struct fs *new_fs()
 {
   struct fs *fs = malloc(sizeof(struct fs *));
+  fs->mem       = malloc(sizeof(struct memory *));
   fs->mem       = new_memory();
-  fs->offsets   = malloc(sizeof(size_t *));
-  fs->sizes     = malloc(sizeof(size_t *));
-  fs->fc        = 0;
-  
   return fs;
 }
 
-/*
 int add_file(struct fs *fs, struct file *f, size_t offset) {
-  fs->offsets[fs->fc] = offset;
-  fs->sizes[fs->fc] = f->s;
-  fs->fc++;
-  
   write_file(fs->mem, f, offset);
   return 0;
 }
-*/
 
 int remove_file();
 
@@ -161,29 +153,20 @@ int test_new_file()
 
 int main()
 {
-  char *s = "test data";
+  struct file *f = new_file("test");
+  struct memory *m = new_memory();
+  dump(m, DEC);
+  for (int i = 0; i < 30; i++) {
+      printf("%d [%x]", i, m->bytes[i]);
+  }
+  printf("\n");
 
-  struct fs *fs = new_fs();
+  write_file(m, f, 0);
 
-  write(fs->mem, s, strlen(s), 0);
-  
-  dump(fs->mem, DEC);
-
-
-  // test_new_file();
-
-//   struct memory *mem = new_memory();
-  
-//   struct fs *fs = new_fs();
-//   struct file *f = new_file("testfile.txt");
-//   fs->mem->bytes = malloc(sizeof(char) * BSIZE);
-//   fs->mem->s     = BSIZE;
-//   printf("\n\nLU: [%lu]\n ", fs->mem->s);
-//   //write_file(fs->mem, f, 0);
-//   dump(fs->mem, DEC);
-
-//   // add_file(fs, f, 0);
-
-//   //dump(fs->mem, DEC);
+  for (int i = 0; i < 30; i++) {
+      printf("%d [%c]", i, m->bytes[i]);
+  }
+  printf("\n");
+  dump(m, DEC);
   return 0;
 }
