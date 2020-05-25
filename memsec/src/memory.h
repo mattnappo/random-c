@@ -2,8 +2,7 @@
 #include <string.h>
 #include <stdio.h>
 
-#define BSIZE 1024
-#define FCOUNT BSIZE
+#define MEM_SIZE 1024
 
 enum print_mode {
   HEX,
@@ -23,7 +22,4 @@ int dump(struct memory *mem, enum print_mode m);
 
 // Write bytes to a memory
 int write(struct memory *mem, char *b, size_t s, size_t offset);
-
-// Write a file to a memory
-// int write_file(struct memory *mem, struct file *f, size_t offset);
 

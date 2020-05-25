@@ -3,8 +3,8 @@
 struct memory *new_memory()
 {
   struct memory *mem = malloc(sizeof(struct memory *));
-  mem->bytes   = malloc(sizeof(char) * BSIZE);
-  mem->s       = sizeof(char) * BSIZE;
+  mem->bytes   = malloc(sizeof(char) * MEM_SIZE);
+  mem->s       = sizeof(char) * MEM_SIZE;
 
   return mem;
 }
@@ -43,21 +43,3 @@ int write(
   return 0;
 }
 
-/*
-int write_file(
-  struct memory *mem,
-  struct file *f,
-  size_t offset
-)
-{
-  if (f->s + offset >= mem->s) {
-   printf("f->s + offset: %lu\nmem->s: %lu\n", (f->s + offset), mem->s);
-   printf("buffer is too big.\n");
-    return 1;
-  }
-  for (size_t i = 0; i < f->s; i++) {
-    mem->bytes[i + offset] = f->bytes[i];
-  }
-  return 0;
-}
-*/
