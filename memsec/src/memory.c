@@ -34,8 +34,7 @@ int write(
   size_t offset
 )
 {
-  if (s + offset >= mem->s) {
-    printf("buffer is too big.\n");
+  if (s + offset >= mem->s) { printf("buffer is too big.\n");
     return 1;
   }
   for (size_t i = 0; i < s; i++) {
@@ -44,6 +43,7 @@ int write(
   return 0;
 }
 
+/*
 int write_file(
   struct memory *mem,
   struct file *f,
@@ -60,4 +60,4 @@ int write_file(
   }
   return 0;
 }
-
+*/

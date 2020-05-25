@@ -38,7 +38,7 @@ struct fs *new_fs()
 }
 
 int add_file(struct fs *fs, struct file *f, size_t offset) {
-  write_file(fs->mem, f, offset);
+  // write_file(fs->mem, f, offset);
   return 0;
 }
 

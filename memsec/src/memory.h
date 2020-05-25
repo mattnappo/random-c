@@ -25,5 +25,5 @@ int dump(struct memory *mem, enum print_mode m);
 int write(struct memory *mem, char *b, size_t s, size_t offset);
 
 // Write a file to a memory
-int write_file(struct memory *mem, struct file *f, size_t offset);
+// int write_file(struct memory *mem, struct file *f, size_t offset);
 
