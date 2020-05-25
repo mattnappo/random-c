@@ -19,7 +19,7 @@ int dump(struct memory *mem, enum print_mode m)
 	else if (m == HEX) {
       printf("%x ", mem->bytes[i]);
     }
-    else if (m == DEC) {
+    else if (m == ASCII) {
       printf("%c", mem->bytes[i]);
     }
   }

@@ -7,7 +7,7 @@
 
 enum print_mode {
   HEX,
-  DEC
+  ASCII
 };
 
 struct memory {

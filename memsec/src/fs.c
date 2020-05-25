@@ -38,8 +38,9 @@ struct fs *new_fs()
 }
 
 int add_file(struct fs *fs, struct file *f, size_t offset) {
-  // write_file(fs->mem, f, offset);
-  return 0;
+    // Add to the vector of files
+    write(fs->mem, f->bytes, f->s, offset);
+    return 0;
 }
 
 int remove_file();
