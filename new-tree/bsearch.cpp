@@ -1,38 +1,40 @@
 #include <iostream>
 #include <cmath>
-#include <list>
+#include <vector>
 
-int get(std::list<int>, int index) {
-	
-};
+void print_vec(std::vector<int> v) {
+	std::cout << "{ ";
+	for (int i = 0; i < v.size(); i++) {
+		std::cout << i << " ";
+	}
+	std::cout << "}" << std::endl;
+}
 
-int search(std::list<int> l, int target) {
-	int middle_index = floor(l.size() / 2);
-	std::list<index> new_list;
+int search_(std::vector<int> v, int start, int end, int target) {
+	int middle_index = floor(v.size() / 2);
 
-	if (target > l.get(middle_index)) {
-		for (int i = middle_index; i < l.size(); i++) {
-			new_list.push_front(l.get(i));
-		}
-		return search(new_list, target);
+	if (target > v.at(middle_index)) {
+		return search_(v, middle_index, v.size() - middle_index, target);
 
-	} else if (target < l.get(middle_index)) {
-		for (int i = 0; i < middle_index; i++) {
-			new_list.push_front(l.get(i));
-		}
-		return search(new_list, target);
-	} else if (target == l.get(middle_index)) {
+	} else if (target < v.at(middle_index)) {
+		return search_(v, 0, middle_index, target);
+	} else if (target == v.at(middle_index)) {
 		return middle_index;
 	}
 
-	return 0;
+	return -1;
+};
+
+int search(std::vector<int> v, int target) {
+	return search_(v, 0, v.size(), target);
 };
 
 int main() {
-	std::list<int> a;
+	std::vector<int> v;
 	for (int i = 0; i < 10; i++) {
-		a.push_front(i);
+		v.push_back(i);
 	}
-	search(a, 3);
+	print_vec(v);
+	std::cout << search(v, 3) << std::endl;
 	return 0;
 };

@@ -36,7 +36,7 @@ struct file *new_file(const char *name)
 
 int main()
 {
-    struct file *fprime = new_file("test");
+    struct file *fprime = new_file("testfile.txt");
     printf("%s", fprime->bytes);
     return 0;
 }

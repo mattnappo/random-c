@@ -1,10 +1,13 @@
-all:
-	make memsec
-	make fs
-memsec:
-	gcc -o bin/memsec.o memsec.c
-fs:
-	gcc -o bin/fs.o fs.c
+SRC  := ./src
+BIN  := ./bin
+EXEC := $(BIN)/memsec.out
+
+SOURCES := $(shell find $(SRC) -name '*.c')
+HEADERS := $(shell find $(SRC) -name '*.h')
+
+memsec: $(SOURCES) $(HEADERS)
+	mkdir -p $(BIN)
+	gcc -o $(EXEC) $(SOURCES)
 
 clean:
 	rm bin/*
