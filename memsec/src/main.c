@@ -1,6 +1,6 @@
 #include "fs.h"
 
-int main()
+int make_simple_fs()
 {
 	struct fs *tfs = new_fs(); // Make the fs
 	struct file *tfile = new_file("testfile.txt"); // Make a new file
@@ -11,5 +11,10 @@ int main()
 	status = dump(tfs->mem, HEX);
 
 	return status;
+}
+
+int main()
+{
+
 }
 

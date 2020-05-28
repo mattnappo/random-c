@@ -26,7 +26,9 @@ struct file *new_file(const char *name)
         fclose(fp);
     }
 
-    f->name = name;
+	for (int i = 0; i < strlen(name); i++) {
+        f->name[i] = name[i];
+	}
     f->offset = 0;
   
     return f;
@@ -60,7 +62,7 @@ int add_f_table_entry(struct f_table *ft, struct file *f)
 {
     if (ft->f_count > MAX_FILES) return -1;
 
-    ft->files[fs->f_count] = f; // malloc here?
+    ft->files[ft->f_count] = f; // malloc here?
 
     return 0;
 }

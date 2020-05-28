@@ -1,3 +1,4 @@
+#include <string.h>
 #include "memory.h"
 
 #ifndef FS_H
@@ -40,7 +41,7 @@ struct file *new_file(const char *name);
 struct f_table *new_f_table();
 
 // Add a file entry into the f_table
-int add_f_table_entry(struct f_table *ft);
+int add_f_table_entry(struct f_table *ft, struct file *f);
 
 #endif
 
