@@ -21,6 +21,10 @@ int test_fs()
 	
 	print_ftable(tfs->ft);
 
+	struct file *file_read = get_file(tfs, 0);
+
+	print_file(*file_read);
+
 	return status;
 }
 

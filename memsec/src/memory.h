@@ -32,4 +32,14 @@ int write(struct memory *mem, char *b, size_t s, size_t offset);
 // Read some bytes from a memory.
 char *read(struct memory *mem, size_t s, size_t offset);
 
+/* TODO
+// Memory functions
+struct pointer {
+    something
+}
+size_t memmalloc(size_t size);
+size_t memcalloc(size_t n, size_t size);
+void free(void *);
+*/
+
 #endif
