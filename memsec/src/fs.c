@@ -25,11 +25,11 @@ struct file *new_file(const char *name)
     
         fclose(fp);
     }
+    f->offset = 0;
 
     for (int i = 0; i < strlen(name); i++) {
         f->name[i] = name[i];
     }
-    f->offset = 0;
   
     return f;
 }
@@ -39,6 +39,7 @@ struct fs *new_fs() // TODO: size parameter
     struct fs *fs = malloc(sizeof(struct fs *));
     fs->mem = malloc(sizeof(struct memory *));
     fs->mem = new_memory();
+    fs->ft = new_ftable();
 
     return fs;
 }
@@ -52,14 +53,14 @@ int add_file(struct fs *fs, struct file *f, size_t offset)
 
 int remove_file();
 
-struct f_table *new_f_table()
+struct ftable *new_ftable()
 {
-    struct f_table *ft = malloc(sizeof(struct f_table *));
+    struct ftable *ft = malloc(sizeof(struct ftable *));
     ft->f_count = 0;
     return ft;
 }
 
-int add_f_table_entry(struct f_table *ft, struct file *f)
+int add_ftable_entry(struct ftable *ft, struct file *f)
 {
     if (ft->f_count > MAX_FILES) return -1;
 
