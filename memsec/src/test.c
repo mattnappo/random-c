@@ -1,6 +1,6 @@
 #include "fs.h"
 
-int make_simple_fs()
+int test_fs()
 {
 	struct fs *tfs = new_fs(); // Make the fs
 	struct file *tfile = new_file("testfile.txt"); // Make a new file
@@ -10,11 +10,27 @@ int make_simple_fs()
 	status = add_file(tfs, tfile, 0); // Add the file to the fs
 	status = dump(tfs->mem, HEX);
 
+	// Test mem reading
+	char *some_read = read(tfs->mem, 15, 6);
+	printf("random read:");
+	for (int i = 0; i < 15; i++) {
+	    printf("%2x ", some_read[i]);
+	}
+	printf("\n");
+
 	return status;
+}
+
+int test_mem()
+{
+    return 0;
 }
 
 int main()
 {
+    test_fs();
+    test_mem();
 
+    return 0;
 }
 

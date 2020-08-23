@@ -26,19 +26,20 @@ struct file *new_file(const char *name)
         fclose(fp);
     }
 
-	for (int i = 0; i < strlen(name); i++) {
+    for (int i = 0; i < strlen(name); i++) {
         f->name[i] = name[i];
-	}
+    }
     f->offset = 0;
   
     return f;
 }
 
-struct fs *new_fs()
+struct fs *new_fs() // TODO: size parameter
 {
     struct fs *fs = malloc(sizeof(struct fs *));
     fs->mem = malloc(sizeof(struct memory *));
     fs->mem = new_memory();
+
     return fs;
 }
 

@@ -2,6 +2,9 @@
 #include <string.h>
 #include <stdio.h>
 
+#ifndef MEMORY_H
+#define MEMORY_H
+
 #define MEM_SIZE 1024
 
 enum print_mode {
@@ -14,6 +17,9 @@ struct memory {
   size_t s;
 };
 
+// These are all of the basic operations. Nothing else needs to be
+// implemented for a basic memory.
+
 // Construct a new memory struct
 struct memory *new_memory();
 
@@ -23,3 +29,7 @@ int dump(struct memory *mem, enum print_mode m);
 // Write bytes to a memory
 int write(struct memory *mem, char *b, size_t s, size_t offset);
 
+// Read some bytes from a memory.
+char *read(struct memory *mem, size_t s, size_t offset);
+
+#endif
