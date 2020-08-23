@@ -2,7 +2,7 @@
 
 struct memory *new_memory()
 {
-  struct memory *mem = malloc(sizeof(struct memory *));
+  struct memory *mem = malloc(sizeof(struct memory));
   mem->bytes = malloc(sizeof(char) * MEM_SIZE);
   mem->s = sizeof(char) * MEM_SIZE;
 
@@ -44,8 +44,7 @@ int write(
 
 char *read(struct memory *mem, size_t s, size_t offset)
 {
-    // char *buf = calloc(s, 1);
-    char *buf = malloc(1000);
+    char *buf = calloc(s, 1);
 
     for (int i = 0; i < s; i++) {
         size_t mem_index = offset + i;

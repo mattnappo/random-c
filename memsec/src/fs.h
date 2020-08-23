@@ -7,16 +7,20 @@
 #define FILENAME_SIZE 16
 #define MAX_FILES     16
 
-// A file, as represented in an ftable.
 struct file {
     char name[FILENAME_SIZE];
     char *bytes;
+    size_t s;
+};
+
+struct ftable_entry {
+    char name[FILENAME_SIZE];
     size_t s;
     size_t offset;
 };
 
 struct ftable {
-    struct file *files[MAX_FILES];
+    struct ftable_entry *files[MAX_FILES];
     size_t f_count;
 };
 
@@ -41,7 +45,9 @@ struct file *new_file(const char *name);
 struct ftable *new_ftable();
 
 // Add a file entry into the ftable
-int add_ftable_entry(struct ftable *ft, struct file *f);
+int add_ftable_entry(struct ftable *ft, struct ftable_entry *entry);
+
+int print_ftable(struct ftable *ft);
 
 #endif
 
