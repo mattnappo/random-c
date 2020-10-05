@@ -45,8 +45,9 @@ Data **init_vec(uint32_t n) {
 
 void free_vec(Data **vec, uint32_t n)
 {
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++) {
         free_data(vec[i]);
+    }
 
     free(vec);
 }
@@ -81,8 +82,9 @@ Data ***init_vec_2d(uint32_t n, uint32_t m)
 
 void free_vec_2d(Data ***vec_2d, uint32_t n, uint32_t m)
 {
-    for (int i = 0; i < m; i++)
+    for (int i = 0; i < m; i++) {
         free_vec(vec_2d[i], n);
+    }
 
     free(vec_2d);
 }
@@ -100,6 +102,41 @@ void print_vec_2d(Data ***vec_2d, uint32_t n, uint32_t m)
     printf("\n");
 }
 
+// FOUR LAYERS DEEEEEPPPP
+Data ****init_vec_3d(uint32_t l, uint32_t n, uint32_t m)
+{
+    Data ****vec_3d = malloc(sizeof(Data ***) * l);
+    for (int i = 0; i < l; i++) {
+        vec_3d[i] = init_vec_2d(n, m);
+    }
+    return vec_3d;
+}
+
+void print_vec_3d(Data ****vec_3d, uint32_t l, uint32_t n, uint32_t m)
+{
+    printf("\n");
+    for (int i = 0; i < l; i++) {
+        printf("|| | ");
+        for (int j = 0; j < m; j++) {
+            for (int k = 0; k < n - 1; k++) {
+                printf("%.2f ", vec_3d[i][j][k]->internal);
+            }
+            printf("%.2f", vec_3d[i][j][n - 1]->internal);
+            printf(" | ");
+        }
+        printf("||\n");
+    }
+    printf("\n");
+}
+
+void free_vec_3d(Data ****vec_3d, uint32_t l, uint32_t n, uint32_t m)
+{
+    for (int i = 0; i < l; i++) {
+        free_vec_2d(vec_3d[i], n, m);
+    }
+    free(vec_3d);
+}
+
 int main(void)
 {
     uint32_t s = 5;
@@ -115,6 +152,13 @@ int main(void)
     Data ***vec_2d = init_vec_2d(n, m);
     print_vec_2d(vec_2d, n, m);
     free_vec_2d(vec_2d, n, m);
+
+    uint32_t l = 7;
+    n = 5; m = 3;
+    Data ****vec_3d = init_vec_3d(l, n, m);
+    print_vec_3d(vec_3d, l, n, m);
+
+    free_vec_3d(vec_3d, l, n, m);
 
 	return 0;
 }
