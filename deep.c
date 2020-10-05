@@ -31,7 +31,7 @@ void free_data(Data *data)
 
 void print_data(Data *data)
 {
-	printf("Data{i: %02f}", data->internal);
+	printf("Data{i: %f}", data->internal);
 }
 
 // init_vec_data initializes a vector of n `Data`s.
@@ -51,13 +51,22 @@ void free_vec(Data **vec, uint32_t n)
     free(vec);
 }
 
-void print_vec(Data **vec, uint32_t n)
+void print_vec_row(Data **vec, uint32_t n)
 {
-	printf("Vec<Data *>[\n    ");
-	for (int i = 0; i < n - 1; i++) {
-		printf("Data{%f}, ", vec[i]->internal);
+    printf("\n| ");
+	for (int i = 0; i < n; i++) {
+		printf("%.2f ", vec[i]->internal);
 	}
-	printf("Data{%f}\n]\n", vec[n - 1]->internal);
+    printf("|\n\n");
+}
+
+void print_vec_col(Data **vec, uint32_t n)
+{
+    printf("\n");
+    for (int i = 0; i < n; i++) {
+        printf("| %.2f |\n", vec[i]->internal);
+    }
+    printf("\n");
 }
 
 // init_vec_2dinitializes a vector of vectors of `Data`s.
@@ -80,28 +89,28 @@ void free_vec_2d(Data ***vec_2d, uint32_t n, uint32_t m)
 
 void print_vec_2d(Data ***vec_2d, uint32_t n, uint32_t m)
 {
-    printf("Vec<Vec<Data *>>[\n    ");
-    for (int i = 0; i < m - 1; i++) {
-        Data **vec = vec_2d[i];
-	    printf("    Vec<Data *>[\n    ");
-	    for (int j = 0; i < n - 1; j++) {
-	    	printf("Data{%f}, ", vec[j]->internal);
-	    }
-	    printf("Data{%f}\n]\n", vec[n - 1]->internal);
+    printf("\n");
+    for (int i = 0; i < m; i++) {
+        printf("| ");
+        for (int j = 0; j < n; j++) {
+            printf("%.2f ", vec_2d[i][j]->internal);
+        }
+        printf("|\n");
     }
+    printf("\n");
 }
 
 int main(void)
 {
-
     uint32_t s = 5;
 	Data **vec = init_vec(s);
-	print_vec(vec, s);
+	print_vec_row(vec, s);
+	print_vec_col(vec, s);
 
     free_vec(vec, s);
 
-    uint32_t n = 10;
-    uint32_t m = 3;
+    uint32_t n = 5;
+    uint32_t m = 5;
 
     Data ***vec_2d = init_vec_2d(n, m);
     print_vec_2d(vec_2d, n, m);
